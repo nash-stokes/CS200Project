@@ -29,9 +29,9 @@
 </tr>
 <tr>
 		<td><b>Name:</b> Lyle Stokes </td>
-		<td><b>CWID:</b> -------- </td>
-		<td><b>Email:</b> --------@crimson.ua.edu </td>
-		<td><b>Time Spent:</b> </td>
+		<td><b>CWID:</b> 11722040 </td>
+		<td><b>Email:</b> lnstokes@crimson.ua.edu </td>
+		<td><b>Time Spent:</b>4 hours </td>
 </tr>
 </table>
 <br>
@@ -55,6 +55,9 @@
 		<br>
 		Nash Stokes: 20%
 		<ul>
+			<li>
+				Help find use cases
+			</li>
 				<li>
 					Use case descriptions
 				</li>
@@ -79,7 +82,7 @@
 <div>
         <h2> Glossary</h2>
                 <p><b>Member: </b> a ChocAn customer that pays a monthly fee in order to receive services provided by healthcare professionals affiliated with ChocAn; each member has a unique 9-digit number</p>
-                <p><b>Member Status: </b> a member�s status is set to suspended if they have not paid membership fees for a least a month</p>
+                <p><b>Member Status: </b> a member�s status is set to suspended if they have not paid membership fees for a least a month</p>
                 <p><b>Provider: </b> a healthcare professional who provides ChocAn services to members</p>
                 <p><b>Service Code: </b> a unique code that corresponds to a specific service</p>
                 <p><b>Provider Directory: </b> list of services containing their corresponding service codes and fees; can be sent to the provider as an email attachment</p>
@@ -124,19 +127,19 @@
 			  	Create Individual Services Rendered Report for each Provider
 				</li>
 				<li>
-				Read/Collect Data from Providers' Service Reports
+				Read/Collect Data from Providers’ Service Reports
 				</li>
 				<li>
-			  	Create file for EFT data
+				Create file for EFT data
 				</li>
 				<li>
-			  	Create Overall Provider Summary Report for Manager
+				Create Overall Provider Summary Report for Manager
 				</li>
 				<li>
-			 	Add/Delete Members
+			 	Add/Delete Member
 				</li>
 				<li>
-			  	Update Members' Record
+			  	Update Members' Records
 				</li>
 				<li>
 			  	Add/Delete Provider
@@ -154,21 +157,187 @@
 		<div>
 		<ul>
 			<li>
-			Use case:
+			Use case: Read/Collect Data from Providers' Service Reports
 			</li>
 			<li>
-			Context:
+			Context: Information is collected and compiled from each service report
 			</li>
 			<li>
-			Actors:
+			Actors: Terminal, Provider, ChocAn Data Center
 			</li>
 			<li>
 			Main Success Scenario:
 			</li>
+			<ol>
+				<li>The providers’ service reports are compiled by the data center</li>
+				<li>Information is received from the providers’ forms and the number of services performed based on date</li>
+				<li>The providers’ service reports are compiled by the data center</li>
+				<li>Total fee charged by the providers is retrieved</li>
+			</ol>
 			<li>
 			Extensions:
 			</li>
+			<ol>
+					<li>Information is incomplete or improperly entered</li>
+			</ol>
 		</ul>
+		<ul>
+				<li>
+				Use case: Create file for EFT data
+				</li>
+				<li>
+				Context: Although the financial component is mainly handled by ACME, the EFT file must be compiled by the software first.
+				</li>
+				<li>
+				Actors: ChocAn Data Center
+				</li>
+				<li>
+				Main Success Scenario:
+				</li>
+				<ol>
+					<li>Individual provider information in compiled</li>
+					<li>Retrieve provider name</li>
+					<li>Retrieve provider number</li>
+					<li>Retrieve amount to be transferred</li>
+					<li>Write data to disk</li>
+				</ol>
+				<li>
+				Extensions:
+				</li>
+				<ol>
+						<li>Information is incomplete or improperly entered</li>
+						<li>Disk is corrupted</li>
+
+				</ol>
+			</ul>
+			<ul>
+					<li>
+					Use case: Create Overall Provider Summary Report for Manager
+					</li>
+					<li>
+					Context: The manager receives a summary report for accounts payable. It contains extensive data about the providers.
+					</li>
+					<li>
+					Actors: Manager, ChocAn Data Center
+					</li>
+					<li>
+					Main Success Scenario:
+					</li>
+					<ol>
+						<li>Data center compiles summary based on: Provider to be paid, Number of consultations by provider, Provider’s total fee, Total number of providers, Total number of consultations, Overall fee total</li>
+						<li>Summary is provided to manager</li>
+					</ol>
+					<li>
+					Extensions:
+					</li>
+					<ol>
+							<li>Information is incomplete or improperly entered</li>
+					</ol>
+				</ul>
+				<ul>
+						<li>
+						Use case: Add/Delete Member
+						</li>
+						<li>
+						Context: Operators are able to add or delete members through the ChocAn Data Center’s interactive mode during the day.
+						</li>
+						<li>
+						Actors: Operators, ChocAn Data Center, Terminal
+						</li>
+						<li>
+						Main Success Scenario:
+						</li>
+						<ol>
+							<li>Operator logs into ChocAn Data Center</li>
+							<li>Perform operation on membership statuses</li>
+							<li>Operator adds new member</li>
+							<li>Operator deletes current member</li>
+						</ol>
+						<li>
+						Extensions:
+						</li>
+						<ol>
+								<li>Operator forgets credentials</li>
+								<li>Data Center is inaccessible/down</li>
+						</ol>
+					</ul>
+					<ul>
+							<li>
+							Use case: Update Members’ Records
+							</li>
+							<li>
+							Context: Operators are able to update member details through the ChocAn Data Center’s interactive mode during the day.
+							</li>
+							<li>
+							Actors: Operators, ChocAn Data Center, Terminal
+							</li>
+							<li>
+							Main Success Scenario:
+							</li>
+							<ol>
+								<li>Operator logs into ChocAn Data Center</li>
+								<li>Perform update on membership details</li>
+							</ol>
+							<li>
+							Extensions:
+							</li>
+							<ol>
+									<li>Operator forgets credentials</li>
+									<li>Data Center is inaccessible/down</li>
+							</ol>
+						</ul>
+						<ul>
+								<li>
+								Use case: Add/Delete Provider
+								</li>
+								<li>
+								Context: Provider records are added or deleted as provider options change.
+								</li>
+								<li>
+								Actors: Provider, Operator, Terminal, ChocAn Data Center
+								</li>
+								<li>
+								Main Success Scenario:
+								</li>
+								<ol>
+									<li>Operator logs into ChocAn Data Center</li>
+									<li>Perform operation on provider statuses</li>
+									<li>Operator adds new provider</li>
+									<li>Operator deletes current provider</li>
+								</ol>
+								<li>
+								Extensions:
+								</li>
+								<ol>
+										<li>Operator forgets credentials</li>
+										<li>Data Center is inaccessible/down</li>
+								</ol>
+							</ul>
+							<ul>
+									<li>
+									Use case: Update Provider Record
+									</li>
+									<li>
+									Context: Provider records are updated as provider options change.
+									</li>
+									<li>
+									Actors: Provider, Operator, Terminal, ChocAn Data Center
+									</li>
+									<li>
+									Main Success Scenario:
+									</li>
+									<ol>
+										<li>Operator logs into ChocAn Data Center</li>
+										<li>Perform update on provider details</li>
+									</ol>
+									<li>
+									Extensions:
+									</li>
+									<ol>
+											<li>Operator forgets credentials</li>
+											<li>Data Center is inaccessible/down</li>
+									</ol>
+								</ul>
 		</div>
 	</p>
 </div>
