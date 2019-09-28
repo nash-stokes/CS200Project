@@ -17,8 +17,8 @@
 </tr>
 <tr>
 		<td><b>Name:</b> Jonathan Pence </td>
-		<td><b>CWID:</b> -------- </td>
-		<td><b>Email:</b> --------@crimson.ua.edu </td>
+		<td><b>CWID:</b> 11881870 </td>
+		<td><b>Email:</b> japence@crimson.ua.edu </td>
 		<td><b>Time Spent:</b> </td>
 </tr>
 <tr>
@@ -50,6 +50,9 @@
 			<ul>
 				<li>
 					Use case description
+				</li>
+				<li>
+					Help find use cases
 				</li>
 			</ul>
 		<br>
@@ -136,16 +139,19 @@
 				Create Overall Provider Summary Report for Manager
 				</li>
 				<li>
-			 	Add/Delete Member
+				Manage People Directory
 				</li>
 				<li>
-			  	Update Members' Records
+			 	Add/Delete Memberc extends Manage People Directory
 				</li>
 				<li>
-			  	Add/Delete Provider
+			  	Update Members' Records extends Manage People Directory
 				</li>
 				<li>
-			  	Update Provider Record
+			  	Add/Delete Provider extends Manage People Directory
+				</li>
+				<li>
+			  	Update Provider Record extends Manage People Directory
 				</li>
 		</ul>
 		</div>
@@ -155,6 +161,191 @@
 	<p>
 	<h4>Description:</h4>
 		<div>
+		<ul>
+			<li>
+			Use case: Validate Customer
+			</li>
+			<li>
+			Context: Validation that a customer is a current member of ChocAn.
+			</li>
+			<li>
+			Actors: Provider, Terminal
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Member provides ChocAn membership card to provider</li>
+				<li>Provider slides card through card reader on the terminal</li>
+				<li>Terminal dials ChocAn data center</li>
+				<li>ChocAn data center verifies member number</li>
+				<li>Validated appears on terminal screen</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ol>
+					<li>For step 5: Validation fails</li>
+					<li>5.1 Invalid number appears on terminal screen if number is invalid</li>
+					<li>5.2 Member suspended appears on terminal screen if member owes fees</li>
+			</ol>
+		</ul>
+		<ul>
+			<li>
+			Use case: Validate Provider
+			</li>
+			<li>
+			Context: Provider enters provider number to designate the service being done as by a specific provider.
+			</li>
+			<li>
+			Actors: Terminal, ChocAn Data Center, Provider
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Provider switches on their terminal.</li>
+				<li>Provider enters their provider number into the terminal.</li>
+				<li>Terminal dials the number to the ChocAn data center and validates the number.</li>
+				<li>The terminal accepts the number and allows the provider to use the software.</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ol>
+				<li>For step 3: Provider number fails to validate, and provider is unable to use the software.</li>
+			</ol>
+		</ul>
+		<ul>
+			<li>
+			Use case: Validate Service
+			</li>
+			<li>
+			Context: ChocAn data center verifies that the service code entered by the provider is valid.
+			</li>
+			<li>
+			Actors: Provider, Terminal, Provider Directory
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Provider passes the card through the terminal, or enters the member number into the terminal after the service is complete.</li>
+				<li>Terminal validates number <u>(see use case: Validate Customer)</u></li>
+				<li>Provider keys in date the service was provided</li>
+				<li>Provider references provider directory to find six-digit service code which corresponds to a specific service provided</li>
+				<li>The provider keys in the service code to the terminal</li>
+				<li>The software allows the provider to validate the code was correct by displaying what the corresponding service is on the screen</li>
+				<li>The software asks for validation that the service is correct</li>
+				<li>The provider can offer comments on the service provided</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ol>
+					<li>For step 6: If the service code provided is invalid, an error message is printed</li>
+			</ol>
+		</ul>
+		<ul>
+			<li>
+			Use case: Record Services
+			</li>
+			<li>
+			Context: Records data about the service provided to disk
+			</li>
+			<li>
+			Actors: Terminal, Provider
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Following successful validation of the service, the software records data about the service to disk</li>
+				<li>The software writes: Current date and time, date service was provided, provider number, member number, service code, and an optional comment on the service.</li>
+				<li>Following this, the software prints the fee to be paid for the service on the terminal screen.</li>
+				<li>The provider validates the transaction by entering the current date and time, the service provided date, member name and number, the service code, and the fee value.</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ol>
+				<li>For step 4: Verification fails and the provider must re-enter the data in order to retry validation</li>
+			</ol>
+		</ul>
+		<ul>
+			<li>
+			Use case: Create File for Provider Directory
+			</li>
+			<li>
+			Context: Provider can request an alphabetically ordered list of service names, codes, and fees.
+			</li>
+			<li>
+			Actors: Provider, Terminal
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Provider accesses the terminal</li>
+				<li>Provider queries the ChocAn software for a provider directory</li>
+				<li>The software e-mails the Provider Directory as an attachment</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<li>N/A</li>
+			<ol>
+
+			</ol>
+		</ul>
+		<ul>
+			<li>
+			Use case: Search Fees to be Paid
+			</li>
+			<li>
+			Context: Software queries ChocAn data center to retrieve fee given a service
+			</li>
+			<li>
+			Actors: Provider, Terminal, ChocAn data center
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Provider access software on terminal and enters service code</li>
+				<li>Software checks service code against its match in the ChocAn data center</li>
+				<li>Data center returns relevant information regarding the service, such as fee and service name</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ol>
+				<li>For step 3: Service code is invalid, and terminal returns an error message</li>
+			</ol>
+		</ul>
+		<ul>
+			<li>
+			Use case: Create Individual Services Rendered Report for each Provider
+			</li>
+			<li>
+			Context: System automatically generates a report for that provider’s services rendered during the week.
+			</li>
+			<li>
+			Actors: ChocAn Data Center, Provider
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>At the end of the week, the data center generates a report containing: Provider name, provider number, provider street address, provider city, provider state, provider ZIP code, details on each service provided that week, including: Date of service, data and time data were received by computer, member name, member number, service code, fee to be paid. Additionally, the report includes the total number of consultations with members that week, as well as the total fee for that week.</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ol>
+					<li>N/A</li>
+			</ol>
+		</ul>
 		<ul>
 			<li>
 			Use case: Read/Collect Data from Providers' Service Reports
@@ -236,7 +427,35 @@
 				</ul>
 				<ul>
 						<li>
-						Use case: Add/Delete Member
+						Use case: Manage People Directory
+						</li>
+						<li>
+						Context: 
+						</li>
+						<li>
+						Actors: 
+						</li>
+						<li>
+						Main Success Scenario:
+						</li>
+						<ol>
+							<li>Operator uses the ChocAn software to modify data on a person present in the ChocAn directory.</li>
+							<li>If the operator adds or deletes a member, then the system accesses the functionality for adding and deleting members.</li>
+							<li>If the operator adds or deletes a provider, then the system accesses the functionality for adding and deleting providers.</li>
+							<li>If the operator updates a member, then the system accesses the functionality for modifying the member data.</li>
+							<li>If the operator updates a provider, then the system accesses the functionality for modifying the provider data.</li>
+						</ol>
+						<li>
+						Extensions:
+						</li>
+						<ol>
+								<li>For step 4: Member does not exist, so no data is modified. Return an error.</li>
+								<li>For step 5: Provider does not exist, so no data is modified. Return an error.</li>
+						</ol>
+					</ul>
+				<ul>
+						<li>
+						Use case: Add/Delete Member extends Manage People Directory
 						</li>
 						<li>
 						Context: Operators are able to add or delete members through the ChocAn Data Center’s interactive mode during the day.
@@ -263,7 +482,7 @@
 					</ul>
 					<ul>
 							<li>
-							Use case: Update Members’ Records
+							Use case: Update Members’ Records extends Manage People Directory
 							</li>
 							<li>
 							Context: Operators are able to update member details through the ChocAn Data Center’s interactive mode during the day.
@@ -288,7 +507,7 @@
 						</ul>
 						<ul>
 								<li>
-								Use case: Add/Delete Provider
+								Use case: Add/Delete Provider extends Manage People Directory
 								</li>
 								<li>
 								Context: Provider records are added or deleted as provider options change.
@@ -315,7 +534,7 @@
 							</ul>
 							<ul>
 									<li>
-									Use case: Update Provider Record
+									Use case: Update Provider Record extends Manage People Directory
 									</li>
 									<li>
 									Context: Provider records are updated as provider options change.
