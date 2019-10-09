@@ -184,7 +184,7 @@
 			Context: Validation that a customer is a current member of ChocAn.
 			</li>
 			<li>
-			Actors: Provider, Terminal
+			Actors: Provider
 			</li>
 			<li>
 			Main Success Scenario:
@@ -195,15 +195,24 @@
 				<li>Terminal dials ChocAn data center</li>
 				<li>ChocAn data center verifies member number</li>
 				<li>Validated appears on terminal screen</li>
+				<li>Card is ejected</li>
 			</ol>
 			<li>
 			Extensions:
 			</li>
-			<ol>
-					<li>For step 5: Validation fails</li>
-					<li>5.1 Invalid number appears on terminal screen if number is invalid</li>
-					<li>5.2 Member suspended appears on terminal screen if member owes fees</li>
-			</ol>
+			<ul>
+					<li>5a. Verification Fails</li>
+					<ul>
+						<li>5a1. Invalid number appears on terminal screen if number is invalid</li>
+						<ul>
+							<li>5a1a. Use case continues at step 6</li>
+						</ul>
+						<li>5a2. Member suspended appears on terminal screen if member owes fees</li>
+						<ul>
+							<li>5a2a. Use case continues at step 6</li>
+						</ul>
+					</ul>
+			</ul>
 		</ul>
 		<ul>
 			<li>
@@ -213,7 +222,7 @@
 			Context: Provider enters provider number to designate the service being done as by a specific provider.
 			</li>
 			<li>
-			Actors: Terminal, ChocAn Data Center, Provider
+			Actors: ChocAn Data Center, Provider
 			</li>
 			<li>
 			Main Success Scenario:
@@ -227,9 +236,13 @@
 			<li>
 			Extensions:
 			</li>
-			<ol>
-				<li>For step 3: Provider number fails to validate, and provider is unable to use the software.</li>
-			</ol>
+			<ul>
+				<li>3a. Provider number fails to validate
+				<ul>
+					<li>3a1. Validation failure is printed to screen</li>
+					<li>3a2. Use case returns to step 2</li>
+				</ul>
+			</ul>
 		</ul>
 		<ul>
 			<li>
@@ -239,7 +252,7 @@
 			Context: ChocAn data center verifies that the service code entered by the provider is valid.
 			</li>
 			<li>
-			Actors: Provider, Terminal, Provider Directory
+			Actors: Provider
 			</li>
 			<li>
 			Main Success Scenario:
@@ -247,55 +260,65 @@
 			<ol>
 				<li>Provider passes the card through the terminal, or enters the member number into the terminal after the service is complete.</li>
 				<li>Terminal validates number <u>(see use case: Validate Customer)</u></li>
-				<li>Provider keys in date the service was provided</li>
+				<li>Provider keys in date the service was provided in format MM-DD-YYYY</li>
 				<li>Provider references provider directory to find six-digit service code which corresponds to a specific service provided</li>
 				<li>The provider keys in the service code to the terminal</li>
 				<li>The software allows the provider to validate the code was correct by displaying what the corresponding service is on the screen</li>
 				<li>The software asks for validation that the service is correct</li>
 				<li>The provider can offer comments on the service provided</li>
+				<li>The card is ejected</li>
 			</ol>
 			<li>
 			Extensions:
 			</li>
-			<ol>
-					<li>For step 6: If the service code provided is invalid, an error message is printed</li>
-			</ol>
+			<ul>
+				<li>6a. Provided service code is invalid</li>
+				<ul>
+					<li>6a1. Error code is printed to the screen</li>
+					<li>6a2. Use case continues at step 9</li>
+				</ul>
+			</ul>
 		</ul>
 		<ul>
 			<li>
-				<b>Use case</b>: Record Services
+				<b>Use case</b>: Generate Service Report
 			</li>
 			<li>
 			Context: Records data about the service provided to disk
 			</li>
 			<li>
-			Actors: Terminal, Provider
+			Actors: Provider
 			</li>
 			<li>
 			Main Success Scenario:
 			</li>
 			<ol>
-				<li>Following successful validation of the service, the software records data about the service to disk</li>
-				<li>The software writes: Current date and time, date service was provided, provider number, member number, service code, and an optional comment on the service.</li>
+				<li>The customer’s card is scanned, making sure no fees need to be paid and that their membership is up-to-date.</li>
+				<li>The selected service’s existence is verified, and the provider is prompted to verify they selected the correct service.</li>
+				<li>The software writes: Current date and time (in MM-DD-YYY HH:MM:SS), date service was provided (in MM-DD-YYYY), 9 digit provider number, 9 digit member number, 6 digit service code, and an optional 100 character comment on the service.</li>
 				<li>Following this, the software prints the fee to be paid for the service on the terminal screen.</li>
 				<li>The provider validates the transaction by entering the current date and time, the service provided date, member name and number, the service code, and the fee value.</li>
 			</ol>
 			<li>
 			Extensions:
 			</li>
-			<ol>
-				<li>For step 4: Verification fails and the provider must re-enter the data in order to retry validation</li>
-			</ol>
+			<ul>
+				<li>4a. Verification fails</li>
+				<ul>
+					<li>4a1. Error code is printed to screen</li>
+					<li>4a2. Use case returns to step 1</li>
+				</ul>
+			</ul>
 		</ul>
 		<ul>
 			<li>
-				<b>Use case</b>: Create File for Provider Directory
+				<b>Use case</b>: Request Provider Directory
 			</li>
 			<li>
 			Context: Provider can request an alphabetically ordered list of service names, codes, and fees.
 			</li>
 			<li>
-			Actors: Provider, Terminal
+			Actors: Provider
 			</li>
 			<li>
 			Main Success Scenario:
@@ -308,10 +331,9 @@
 			<li>
 			Extensions:
 			</li>
-			<li>N/A</li>
-			<ol>
-
-			</ol>
+			<ul>
+				<li>N/A</li>
+			</ul>
 		</ul>
 		<ul>
 			<li>
@@ -321,7 +343,7 @@
 			Context: Software queries ChocAn data center to retrieve fee given a service
 			</li>
 			<li>
-			Actors: Provider, Terminal, ChocAn data center
+			Actors: Provider, ChocAn data center
 			</li>
 			<li>
 			Main Success Scenario:
@@ -334,32 +356,61 @@
 			<li>
 			Extensions:
 			</li>
-			<ol>
-				<li>For step 3: Service code is invalid, and terminal returns an error message</li>
-			</ol>
+			<ul>
+				<li>3a. Service code is invalid<li>
+				<ul>
+					<li>3a1. Error printed to screen</li>
+					<li>3a2. Use case returns to step 1</li>
+				</ul>
+			</ul>
 		</ul>
 		<ul>
 			<li>
-				<b>Use case</b>: Create Individual Services Rendered Report for each Provider
+				<b>Use case</b>: Generate Provider Report for Provider
 			</li>
 			<li>
 			Context: System automatically generates a report for that provider’s services rendered during the week.
 			</li>
 			<li>
-			Actors: ChocAn Data Center, Provider
+			Actors: ChocAn Data Center, Timer
 			</li>
 			<li>
 			Main Success Scenario:
 			</li>
 			<ol>
 				<li>At the end of the week, the data center generates a report containing: Provider name, provider number, provider street address, provider city, provider state, provider ZIP code, details on each service provided that week, including: Date of service, data and time data were received by computer, member name, member number, service code, fee to be paid. Additionally, the report includes the total number of consultations with members that week, as well as the total fee for that week.</li>
+				<li>The report is then sent to the respective ChocAn provider.</li>
 			</ol>
 			<li>
 			Extensions:
 			</li>
-			<ol>
+			<ul>
 					<li>N/A</li>
+			</ul>
+		</ul>
+		<ul>
+			<li>
+				<b>Use case</b>: Generate Member Report
+			</li>
+			<li>
+			Context: Generates member report detailing the services obtained by the respective member.
+			</li>
+			<li>
+			Actors: Timer, ChocAn Data Center
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>At midnight Friday, the ChocAn Data Center generates a member report containing: member name, member number, member street address, member city, member state, member ZIP code, details of each service provided including: date of service, provider name, and service name.</li>
+				<li>The report is then sent as an e-mail attachment to that respective member</li>
 			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ul>
+				<li>N/A</li>
+			</ul>
 		</ul>
 		<ul>
 			<li>
