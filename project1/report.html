@@ -440,7 +440,7 @@
 		</ul>
 		<ul>
 				<li>
-					<b>Use case</b>: Create file for EFT data
+					<b>Use case</b>: Generate file for EFT data
 				</li>
 				<li>
 				Context: Although the financial component is mainly handled by ACME, the EFT file must be compiled by the software first.
@@ -452,7 +452,7 @@
 				Main Success Scenario:
 				</li>
 				<ol>
-					<li>Individual provider information in compiled</li>
+					<li>Individual provider information is compiled</li>
 					<li>Retrieve provider name</li>
 					<li>Retrieve provider number</li>
 					<li>Retrieve amount to be transferred</li>
@@ -461,15 +461,16 @@
 				<li>
 				Extensions:
 				</li>
-				<ol>
-						<li>Information is incomplete or improperly entered</li>
-						<li>Disk is corrupted</li>
+				<ul>
+						<li>1a. Disk is corrupted</li>
+						<li>1a1. Disk error printed to screen</li>
+						<li>1a2. Use case returns to step 2</li>
 
-				</ol>
+				</ul>
 			</ul>
 			<ul>
 					<li>
-						<b>Use case</b>: Create Overall Provider Summary Report for Manager
+						<b>Use case</b>: Generate Overall Provider Summary Report for Manager
 					</li>
 					<li>
 					Context: The manager receives a summary report for accounts payable. It contains extensive data about the providers.
@@ -482,24 +483,24 @@
 					</li>
 					<ol>
 						<li>Data center compiles summary based on: Provider to be paid, Number of consultations by provider, Provider’s total fee, Total number of providers, Total number of consultations, Overall fee total</li>
-						<li>Summary is provided to manager</li>
+						<li>Summary report is then provided to the manager so that the manager may deliberate which providers to pay for which services were rendered.</li>
 					</ol>
 					<li>
 					Extensions:
 					</li>
-					<ol>
-							<li>Information is incomplete or improperly entered</li>
-					</ol>
+					<ul>
+							<li>N/A</li>
+					</ul>
 				</ul>
 				<ul>
 						<li>
 							<b>Use case</b>: Manage People Directory
 						</li>
 						<li>
-						Context: 
+						Context: Adds, deletes, or updates any persons (members or providers) within the ChocAn directory.
 						</li>
 						<li>
-						Actors: 
+						Actors: Operator
 						</li>
 						<li>
 						Main Success Scenario:
@@ -514,10 +515,14 @@
 						<li>
 						Extensions:
 						</li>
-						<ol>
-								<li>For step 4: Member does not exist, so no data is modified. Return an error.</li>
-								<li>For step 5: Provider does not exist, so no data is modified. Return an error.</li>
-						</ol>
+						<ul>
+								<li>4a. Member does not exist</li>
+								<li>4a1. Error printed to screen.</li>
+								<li>4a1. Error printed to screen</li>
+								<li>5a. Provider does not exist</li>
+								<li>5a1. Error printed to screen</li>
+								<li>5a2. Use case returns to step 1</li>
+						</ul>
 					</ul>
 				<ul>
 						<li>
@@ -527,12 +532,13 @@
 						Context: Operators are able to add or delete members through the ChocAn Data Center’s interactive mode during the day.
 						</li>
 						<li>
-						Actors: Operators, ChocAn Data Center, Terminal
+						Actors: Operators, ChocAn Data Center
 						</li>
 						<li>
 						Main Success Scenario:
 						</li>
 						<ol>
+							<li>Operator logs into ChocAn Data Center</li>
 							<li>Operator logs into ChocAn Data Center</li>
 							<li>Perform operation on membership statuses</li>
 							<li>Operator adds new member</li>
@@ -541,10 +547,11 @@
 						<li>
 						Extensions:
 						</li>
-						<ol>
-								<li>Operator forgets credentials</li>
-								<li>Data Center is inaccessible/down</li>
-						</ol>
+						<ul>
+								<li>2a. Member to delete does not exist</li>
+								<li>2a1. Error printed to screen</li>
+								<li>2a2. Use case returns to step 2</li>
+						</ul>
 					</ul>
 					<ul>
 							<li>
@@ -554,22 +561,24 @@
 							Context: Operators are able to update member details through the ChocAn Data Center’s interactive mode during the day.
 							</li>
 							<li>
-							Actors: Operators, ChocAn Data Center, Terminal
+							Actors: Operators, ChocAn Data Center
 							</li>
 							<li>
 							Main Success Scenario:
 							</li>
 							<ol>
 								<li>Operator logs into ChocAn Data Center</li>
+								<li>Operator enters member credentials</li>
 								<li>Perform update on membership details</li>
 							</ol>
 							<li>
 							Extensions:
 							</li>
-							<ol>
-									<li>Operator forgets credentials</li>
-									<li>Data Center is inaccessible/down</li>
-							</ol>
+							<ul>
+									<li>2a. Member does not exist</li>
+									<li>2a1. Error printed to screen</li>
+									<li>2a2. Use case returns to step 2</li>
+							</ul>
 						</ul>
 						<ul>
 								<li>
@@ -586,6 +595,7 @@
 								</li>
 								<ol>
 									<li>Operator logs into ChocAn Data Center</li>
+									<li>Operator enters provider credentials</li>
 									<li>Perform operation on provider statuses</li>
 									<li>Operator adds new provider</li>
 									<li>Operator deletes current provider</li>
@@ -593,10 +603,11 @@
 								<li>
 								Extensions:
 								</li>
-								<ol>
-										<li>Operator forgets credentials</li>
-										<li>Data Center is inaccessible/down</li>
-								</ol>
+								<ul>
+										<li>2a. Provider does not exist</li>
+										<li>2a1. Error printed to screen</li>
+										<li>2a2. Use case returns to step 2</li>
+								</ul>
 							</ul>
 							<ul>
 									<li>
@@ -606,22 +617,49 @@
 									Context: Provider records are updated as provider options change.
 									</li>
 									<li>
-									Actors: Provider, Operator, Terminal, ChocAn Data Center
+									Actors: Provider, Operator, ChocAn Data Center
 									</li>
 									<li>
 									Main Success Scenario:
 									</li>
 									<ol>
 										<li>Operator logs into ChocAn Data Center</li>
+										<li>Operator enters provider credentials</li>
 										<li>Perform update on provider details</li>
 									</ol>
 									<li>
 									Extensions:
 									</li>
+									<ul>
+											<li>2a. Provider does not exist</li>
+											<li>2a1. Error printed to screen</li>
+											<li>2a2. Use case returns to step 2</li>
+									</ul>
+								</ul>
+								<ul>
+									<li>
+										<b>Use case</b>: Run Main Accounting Procedure includes Generate Member Report, Generate File for EFT Data, Generate Overall Provider Report Summary for Manager, and Generate Provider Report
+									</li>
+									<li>
+									Context: Generates all the reports which will be sent out at the end of the week.
+									</li>
+									<li>
+									Actors: Timer, ChocAn Data Center, Member, Provider, Manager
+									</li>
+									<li>
+									Main Success Scenario:
+									</li>
 									<ol>
-											<li>Operator forgets credentials</li>
-											<li>Data Center is inaccessible/down</li>
+										<li>The timer recognizes that the end of the week has commenced.</li>
+										<li>The software system, pulling data from the ChocAn data center, generates the following reports: a. Individual Member Service Report for each Member, b. Individual Services Rendered Report for each Provider, c. Overall Provider Summary Report for Manager, d. EFT data</li>
+										<li>The system then prints and e-mails reports to their respective intended recipients.</li>
 									</ol>
+									<li>
+									Extensions:
+									</li>
+									<ul>
+											<li>N/A</li>
+									</ul>
 								</ul>
 		</div>
 	</p>
