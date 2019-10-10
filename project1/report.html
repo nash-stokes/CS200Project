@@ -170,10 +170,47 @@
 	<p>
 	<h4>Description:</h4>
 		<div>
-		
 		<ul>
 			<li>
 				<b>Use case</b>: Validate Member
+			</li>
+			<li>
+			Context: Validation that a customer is a current member of ChocAn.
+			</li>
+			<li>
+			Actors: Provider, ChocAn Data Center
+			</li>
+			<li>
+			Main Success Scenario:
+			</li>
+			<ol>
+				<li>Member provides ChocAn membership card to provider</li>
+				<li>Provider slides card through card reader on the terminal</li>
+				<li>Terminal dials ChocAn data center</li>
+				<li>ChocAn data center verifies member number</li>
+				<li>Validated appears on terminal screen</li>
+				<li>Card is ejected</li>
+			</ol>
+			<li>
+			Extensions:
+			</li>
+			<ul>
+				<li>5a. Verification fails
+				<ul>
+					<li>5a1. Invalid number appears on terminal screen if number is invalid</li>
+						<ul>
+							<li>5a1a. Use case continues at step 6</li>
+						</ul>
+					<li>5a2. Member suspended appears on terminal screen if member owes fees</li>
+						<ul>
+							<li>5a2a. Use case continues at step 6</li>
+						</ul>
+				</ul>
+			</ul>
+		</ul>
+		<ul>
+			<li>
+				<b>Use case</b>: Validate Provider
 			</li>
 			<li>
 			Context: Provider enters provider number to designate the service being done as by a specific provider.
