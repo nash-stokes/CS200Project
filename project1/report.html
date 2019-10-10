@@ -119,24 +119,18 @@
 		<h3> Use Case descriptions</h3>
 			<div>
 		 	<h4> List: </h4> 
-		 	<ul>
-		 		<li>
-			  	Validate Customer
-				</li>  
+		 	<ul> 
+				<li>
+			  	Validate Member
+				</li>
 				<li>
 			  	Validate Provider
-				</li> 
-				<li>
-			  	Validate Service
-				</li>  
+				</li>   
 				<li>
 			  	Generate Service Report
 				</li>  
 				<li>
 			  	Request Provider Directory
-				</li>
-				<li>
-			  	Search Fees to be Paid
 				</li>
 				<li>
 			  	Generate Provider Report for Provider
@@ -176,47 +170,10 @@
 	<p>
 	<h4>Description:</h4>
 		<div>
+		
 		<ul>
 			<li>
-			<b>Use case</b>: Validate Customer
-			</li>
-			<li>
-			Context: Validation that a customer is a current member of ChocAn.
-			</li>
-			<li>
-			Actors: Provider, ChocAn Data Center
-			</li>
-			<li>
-			Main Success Scenario:
-			</li>
-			<ol>
-				<li>Member provides ChocAn membership card to provider</li>
-				<li>Provider slides card through card reader on the terminal</li>
-				<li>Terminal dials ChocAn data center</li>
-				<li>ChocAn data center verifies member number</li>
-				<li>Validated appears on terminal screen</li>
-				<li>Card is ejected</li>
-			</ol>
-			<li>
-			Extensions:
-			</li>
-			<ul>
-					<li>5a. Verification Fails</li>
-					<ul>
-						<li>5a1. Invalid number appears on terminal screen if number is invalid</li>
-						<ul>
-							<li>5a1a. Use case continues at step 6</li>
-						</ul>
-						<li>5a2. Member suspended appears on terminal screen if member owes fees</li>
-						<ul>
-							<li>5a2a. Use case continues at step 6</li>
-						</ul>
-					</ul>
-			</ul>
-		</ul>
-		<ul>
-			<li>
-				<b>Use case</b>: Validate Provider
+				<b>Use case</b>: Validate Member
 			</li>
 			<li>
 			Context: Provider enters provider number to designate the service being done as by a specific provider.
@@ -241,41 +198,6 @@
 				<ul>
 					<li>3a1. Validation failure is printed to screen</li>
 					<li>3a2. Use case returns to step 2</li>
-				</ul>
-			</ul>
-		</ul>
-		<ul>
-			<li>
-				<b>Use case</b>: Validate Service
-			</li>
-			<li>
-			Context: ChocAn data center verifies that the service code entered by the provider is valid.
-			</li>
-			<li>
-			Actors: Provider
-			</li>
-			<li>
-			Main Success Scenario:
-			</li>
-			<ol>
-				<li>Provider passes the card through the terminal, or enters the member number into the terminal after the service is complete.</li>
-				<li>Terminal validates number <u>(see use case: Validate Customer)</u></li>
-				<li>Provider keys in date the service was provided in format MM-DD-YYYY</li>
-				<li>Provider references provider directory to find six-digit service code which corresponds to a specific service provided</li>
-				<li>The provider keys in the service code to the terminal</li>
-				<li>The software allows the provider to validate the code was correct by displaying what the corresponding service is on the screen</li>
-				<li>The software asks for validation that the service is correct</li>
-				<li>The provider can offer comments on the service provided</li>
-				<li>The card is ejected</li>
-			</ol>
-			<li>
-			Extensions:
-			</li>
-			<ul>
-				<li>6a. Provided service code is invalid</li>
-				<ul>
-					<li>6a1. Error code is printed to the screen</li>
-					<li>6a2. Use case continues at step 9</li>
 				</ul>
 			</ul>
 		</ul>
@@ -333,35 +255,6 @@
 			</li>
 			<ul>
 				<li>N/A</li>
-			</ul>
-		</ul>
-		<ul>
-			<li>
-				<b>Use case</b>: Search Fees to be Paid
-			</li>
-			<li>
-			Context: Software queries ChocAn data center to retrieve fee given a service
-			</li>
-			<li>
-			Actors: Provider, ChocAn data center
-			</li>
-			<li>
-			Main Success Scenario:
-			</li>
-			<ol>
-				<li>Provider access software on terminal and enters service code</li>
-				<li>Software checks service code against its match in the ChocAn data center</li>
-				<li>Data center returns relevant information regarding the service, such as fee and service name</li>
-			</ol>
-			<li>
-			Extensions:
-			</li>
-			<ul>
-				<li>3a. Service code is invalid<li>
-				<ul>
-					<li>3a1. Error printed to screen</li>
-					<li>3a2. Use case returns to step 1</li>
-				</ul>
 			</ul>
 		</ul>
 		<ul>
