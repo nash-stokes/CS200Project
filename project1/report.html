@@ -246,15 +246,22 @@
 			Context: Records data about the service provided to disk
 			</li>
 			<li>
-			Actors: Provider
+			Actors: Provider, ChocAn Data Center
 			</li>
 			<li>
 			Main Success Scenario:
 			</li>
 			<ol>
-				<li>The customer’s card is scanned, making sure no fees need to be paid and that their membership is up-to-date.</li>
-				<li>The selected service’s existence is verified, and the provider is prompted to verify they selected the correct service.</li>
+				<li>The provider validates the member.</li>
+				<li>Provider keys in date the service was provided (in MM-DD-YYYY)</li>
+				<li>Provider references provider directory to find six-digit service code which corresponds to a specific service provided</li>
+				<li>Provider keys in the service code to the terminal</li>
+				<li>The software allows the provider to validate the code was correct by displaying what the corresponding service is on the screen</li>
+				<li>The provider asks for validation that the service is correct</li>
+				<li>The provider can offer comments on the service provided</li>
 				<li>The software writes: Current date and time (in MM-DD-YYY HH:MM:SS), date service was provided (in MM-DD-YYYY), 9 digit provider number, 9 digit member number, 6 digit service code, and an optional 100 character comment on the service.</li>
+				<li>Software checks service code against its match in the ChocAn data center</li>
+				<li>Data center returns fee for respective service</li>
 				<li>Following this, the software prints the fee to be paid for the service on the terminal screen.</li>
 				<li>The provider validates the transaction by entering the current date and time, the service provided date, member name and number, the service code, and the fee value.</li>
 			</ol>
@@ -262,10 +269,15 @@
 			Extensions:
 			</li>
 			<ul>
-				<li>4a. Verification fails</li>
+				<li>1a. Verification fails</li>
 				<ul>
 					<li>4a1. Error code is printed to screen</li>
 					<li>4a2. Use case returns to step 1</li>
+				</ul>
+				<li>5a. Number does not exist in the system</li>
+				<ul>
+					<li>4a1. Error code is printed to screen</li>
+					<li>4a2. Use case returns to step 4</li>
 				</ul>
 			</ul>
 		</ul>
