@@ -142,7 +142,10 @@
 				Generate file for EFT data
 				</li>
 				<li>
-				Generate Overall Provider Summary Report for Manager
+				Generate Accounts Payable Report for Manager
+				</li>
+				<li>
+				Run Individual Report
 				</li>
 				<li>
 				Manage People Directory
@@ -417,13 +420,13 @@
 			</ul>
 			<ul>
 					<li>
-						<b>Use case</b>: Generate Overall Provider Summary Report for Manager
+						<b>Use case</b>: Generate Accounts Payable Report for Manager
 					</li>
 					<li>
 					Context: The manager receives a summary report for accounts payable. It contains extensive data about the providers.
 					</li>
 					<li>
-					Actors: Manager, ChocAn Data Center
+					Actors: Manager, Timer, ChocAn Data Center
 					</li>
 					<li>
 					Main Success Scenario:
@@ -438,7 +441,31 @@
 					<ul>
 							<li>N/A</li>
 					</ul>
-				</ul>
+			</ul>
+			<ul>
+				<li>
+				<b>Use case</b>: Run Individual Report
+				</li>
+				<li>
+				Context: At the request of a manager, a specific report (Provider, Member, or AccountsPayable) can be run to be generated 
+				</li>
+				<li>
+				Actors: Manager, ChocAnDataCenter
+				</li>
+				<li>
+				Main Success Scenario:
+				</li>
+				<ol>
+					<li>The Manager requests a specific type of report to be run through the terminal</li>
+					<li>The ChocAnDataCenter receives the request and runs to generate a report</li>
+				</ol>
+				<li>
+					Extensions:
+				</li>
+					<ul>
+						<li>1a. Manager requests a improper report type</li>
+					</ul>
+			</ul>
 				<ul>
 						<li>
 							<b>Use case</b>: Manage People Directory
