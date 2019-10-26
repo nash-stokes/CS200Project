@@ -99,14 +99,16 @@
 	<p>
 	<div>
 		<h2>Discussion of design</h2>
-			<p> 
-			 
-			<br>
-			<br> 
-			<br>  
-			<br> 
-			<br> 
-			<br>  
+			<p>
+				Our design achieves a high standard of coupling due to successfuly encaspulating data in very specific entity classes, and only allowing
+				the funneling of their data through control classes. We have deliberately
+				designed our functions to never interact with data that is not relevant to their scope. Entities never directly interact with other
+				entities, and are only accessed or modified by their respective controller. For cohesion, we have successfuly deduced the appropriate
+				number and roles of the different classes necessary for our software's operation, and grouped attributes and methods to these classes appropriately.
+				We have no cross-over or bloat wherein a class consumes multiple different roles; instead, we divvy up data and function according to what that
+				class has been specifically designed to do. Thus, our design has coupled solely by data, and our cohesion is extremely functional. Therefore
+				our design will not encounter faults due to inappropriately handled data, or have redundant complexity due to bloated classes,
+				which is the essence of good design.
 			</p>
 	</div>
 	<div>
