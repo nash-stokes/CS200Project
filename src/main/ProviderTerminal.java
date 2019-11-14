@@ -1,16 +1,17 @@
 package main;
+
 public class ProviderTerminal {
-	boolean authenticated = false;
+  boolean authenticated = false;
 	
-	void getProviderDirectory() {
-		
-	}
+  void getProviderDirectory() {
+    
+  }
 	
-	void manageService() {
-		
-	}
+  void manageService() {
+    
+  }
 	
-	void authenticateProvider() {
-		
-	}
+  void authenticateProvider() {
+    
+  }
 }

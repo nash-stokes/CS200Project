@@ -1,6 +1,7 @@
 package main;
+
 public class MainAccountingController {
-	void getWeeklyReport() {
-		
-	}
+  void getWeeklyReport() {
+    
+  }
 }
