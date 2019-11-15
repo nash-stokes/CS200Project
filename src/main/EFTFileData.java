@@ -1,4 +1,6 @@
-public Class EFTFileData{
+package main;
+
+public class EFTFileData{
     String providerName;
     String providerNumber;
     float transferAmount;
@@ -15,7 +17,7 @@ public Class EFTFileData{
         return providerNumber;
     }
 
-    public void setProviderName(String providerNumber){
+    public void setProviderNumber(String providerNumber){
         this.providerNumber = providerNumber;
     }
 
