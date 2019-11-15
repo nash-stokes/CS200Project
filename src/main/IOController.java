@@ -1,4 +1,4 @@
-package main;
+//package main;
 
 import java.util.Scanner;
 
@@ -20,6 +20,12 @@ public class IOController {
 
     static int getInt() {
         int x = kb.nextInt();
+
+        return x;
+    }
+
+    static double getDouble() {
+        double x = kb.nextDouble();
 
         return x;
     }
