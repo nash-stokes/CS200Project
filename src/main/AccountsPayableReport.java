@@ -16,7 +16,7 @@ public class AccountsPayableReport {
 	
 	public void printAccountsPayableReport() throws IOException {
 		FileWriter file = new FileWriter("AccountsPayableReport.txt");
-	    PrintWriter writing = new PrintWriter(file);
+		PrintWriter writing = new PrintWriter(file);
 		writing.println("Providers to be paid | Number of Consultations | Total Fee: ");
 		for(int x = 0; x < providerList.size(); x++) {
 			numOfConsults =  service.getCountServices(x); //figure out later
