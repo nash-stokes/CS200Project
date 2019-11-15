@@ -1,3 +1,4 @@
+//Nash
 package main;
 
 public class OperatorTerminal{
@@ -5,31 +6,31 @@ public class OperatorTerminal{
         //MEMBER OPERATIONS
         if (accType == 0){
             if (action == 0){
-                addMember();
+                MemberController.addMember();
             }
             else if(action == 1){
-                deleteMember();
+                MemberController.deleteMember();
             }
             else if(action == 2){
-                updateMember();
+                MemberController.updateMember();
             }
             else if(action == 3){
-                validateMember();
+                MemberController.validateMember();
             }
         }
         //PROVIDER OPERATIONS
         else{
             if (action == 0){
-                addProvider();
+                ProviderController.addProvider();
             }
             else if(action == 1){
-                deleteProvider();
+                ProviderController.deleteProvider();
             }
             else if(action == 2){
-                updateProvider();
+                ProviderController.updateProvider();
             }
             else if(action == 3){
-                validateProvider();
+                ProviderController.validateProvider();
             }
         }
     }
