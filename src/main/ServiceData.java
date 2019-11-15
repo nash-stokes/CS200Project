@@ -1,4 +1,4 @@
-package cs200team4.project4.erik;
+package main;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
