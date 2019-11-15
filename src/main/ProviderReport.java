@@ -18,6 +18,17 @@ public class ProviderReport {
   private int numOfConsults = service.getCountServices()
   private float totalFee = services.getTotalFee();
   
+  public ProviderReport(String providerName, String providerNumber, String providerAddress, String providerCity, String providerState, String providerZIP, ArrayList<ServiceData> service, int numOfConsults, float totalFee) {
+    this.providerName = providerName;
+    this.providerNumber = providerNumber;
+    this.providerAddress = providerAddress;
+    this.providerCity = providerCity;
+    this.providerZIP = providerZIP;
+    this.service = service;
+    this.numOfConsults = numOfConsults;
+    this.totalFee = totalFee;
+  }
+
   public void printProviderReport() throws IOException {
     FileWriter file = new FileWriter(providerName+".txt");
     PrintWriter writing = new PrintWriter(file);
