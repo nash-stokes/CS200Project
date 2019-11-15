@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 public class ProviderData extends PersonData{
 	private String providerNumber;
-	private ServiceData providerServiceList[];
 	
 	Scanner scanner = new Scanner(System.in); //Scanner used to allow user to re-input fields 
 	

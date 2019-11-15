@@ -3,6 +3,7 @@ package main;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class PersonData {
 	private String name;
@@ -10,6 +11,7 @@ public class PersonData {
 	private String city;
 	private String state;
 	private String ZIP;
+	private ArrayList<ServiceData> serviceList = new ArrayList<ServiceData>(); //List of services for each member/provider
 	
 	Scanner scanner = new Scanner(System.in); //Scanner used to allow user to re-input fields 
 	
@@ -106,5 +108,13 @@ public class PersonData {
 				break;
 		}
 		this.ZIP = ZIP;
+	}
+
+	public ArrayList<ServiceData> getServiceList() {
+		return serviceList;
+	}
+
+	public void addService(ServiceData sData) {
+		serviceList.add(sData);
 	}
 }

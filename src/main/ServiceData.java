@@ -11,7 +11,8 @@ public class ServiceData {
 	private String memberNumber;
 	private String serviceCode;
 	private String comments;
-	
+	private double serviceFee;
+
 	Scanner scanner = new Scanner(System.in);
 	
 	//Check for date format:
@@ -26,6 +27,20 @@ public class ServiceData {
 	Pattern onlyNums = Pattern.compile("[0-9]+");
 	Matcher numsMatch;
 	
+	public ServiceData() {
+		//Default Provider
+	}
+
+	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee) {
+		this.serviceDate = serviceDate;
+		this.serviceTime = serviceTime;
+		this.providerNumber = providerNumber;
+		this.memberNumber = memberNumber;
+		this.serviceCode = serviceCode;
+		this.comments = comments;
+		this.serviceFee = serviceFee;
+	}
+
 	public String getServiceDate() {
 		return serviceDate;
 	}
@@ -117,5 +132,11 @@ public class ServiceData {
 		this.comments = comments;
 	}
 	
-	
+	public double getServiceFee() {
+		return serviceFee;
+	}
+
+	public void setServiceFee(double fee) {
+		this.serviceFee = fee;
+	}
 }
