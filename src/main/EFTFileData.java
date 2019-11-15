@@ -1,7 +1,7 @@
-public Class EFTFileData{
-    String providerName;
-    String providerNumber;
-    float transferAmount;
+public class EFTFileData{
+    private String providerName;
+    private String providerNumber;
+    private float transferAmount;
 
     public String getProviderName(){
         return providerName;

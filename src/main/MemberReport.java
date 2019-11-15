@@ -1,13 +1,13 @@
 import java.io.*;
 
-public Class MemberReport{
-    String memberName;
-    String memberNumber;
-    String memberAddress;
-    String memberCity;
-    String memberState;
-    String memberZIP;
-    String serviceInfo;
+public class MemberReport{
+    private String memberName;
+    private String memberNumber;
+    private String memberAddress;
+    private String memberCity;
+    private String memberState;
+    private String memberZIP;
+    private String serviceInfo;
 
     FileOutputStream out = null;
 

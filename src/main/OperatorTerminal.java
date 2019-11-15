@@ -1,4 +1,4 @@
-public Class OperatorTerminal{
+public class OperatorTerminal{
     public void manageAccount(boolean accType, int action){
         //MEMBER OPERATIONS
         if (accType == 0){
