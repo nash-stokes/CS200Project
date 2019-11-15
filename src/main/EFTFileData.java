@@ -15,7 +15,7 @@ public Class EFTFileData{
         return providerNumber;
     }
 
-    public void setProviderName(String providerNumber){
+    public void setProviderNumber(String providerNumber){
         this.providerNumber = providerNumber;
     }
 
