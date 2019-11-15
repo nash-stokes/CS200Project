@@ -1,6 +1,8 @@
+package main;
+
 import java.io.*;
 
-public Class MemberReport{
+public class MemberReport{
     String memberName;
     String memberNumber;
     String memberAddress;
