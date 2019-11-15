@@ -1,4 +1,4 @@
-//package main;
+package main;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,9 @@ public class ProviderController {
 
     public static void addProvider() {
         IOController.output("Input: name, street, city, state, ZIP, and provider number.");
-        ProviderData x = new ProviderData(IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString());
-        ProviderList.add(x);
+        ProviderData x = new ProviderData(IOController.getString(), IOController.getString(), IOController.getString(),
+                IOController.getString(), IOController.getString(), IOController.getString());
+        providerList.add(x);
         ServiceController.incrementNumProviders();
         IOController.output("Provider successfully added!");
     }

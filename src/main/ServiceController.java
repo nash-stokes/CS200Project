@@ -46,14 +46,11 @@ public class ServiceController {
         return totalFee;
     }
 
-    <<<<<<<HEAD
     // UNCOMMENT ONCE DATA CLASS IMPLEMENTED
     // public ServiceData[] getServiceList() {
     // return serviceList;
     // }
-    =======
 
     public ArrayList<ServiceData> getServiceList() {
          return serviceList;
-    }>>>>>>>5 b5bd5ce920b3b7f85e887a761287827dbfcad95
 }
