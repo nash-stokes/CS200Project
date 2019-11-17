@@ -15,7 +15,7 @@ public class ProviderReport {
   private String providerState;
   private String providerZIP;
   private ArrayList<ServiceData> service = new ArrayList<ServiceData>();
-  private int numOfConsults = service.getCountServices()
+  private int numOfConsults = service.getCountServices();
   private float totalFee = services.getTotalFee();
   
   public ProviderReport(String providerName, String providerNumber, String providerAddress, String providerCity, String providerState, String providerZIP, ArrayList<ServiceData> service, int numOfConsults, float totalFee) {

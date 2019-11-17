@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ProviderDirectoryData {
-	private static final ArrayList<String> serviceCodes = new ArrayList<String>();
-	private static final ArrayList<String> serviceNames = new ArrayList<String>();
-	private static final ArrayList<Double> serviceFees = new ArrayList<Double>();
+	private static ArrayList<String> serviceCodes = new ArrayList<String>();
+	private static ArrayList<String> serviceNames = new ArrayList<String>();
+	private static ArrayList<String> serviceFees = new ArrayList<String>();
 	private String codes;
 	private String names;
 	private double fees;
@@ -16,8 +16,17 @@ public class ProviderDirectoryData {
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
 		String line;
-		while((line = br.readLine()) != null){
-			
+		line = br.readLine();
+		for(String word : line.split(" ")){
+			serviceNames.add(word);
+		}
+		line = br.readLine();
+		for(String word : line.split(" ")){
+			serviceCodes.add(word);
+		}
+		line = br.readLine();
+		for(String number : line.split(" ")){
+			serviceFees.add(number);
 		}
 		br.close();
 		fr.close();
@@ -38,7 +47,8 @@ public class ProviderDirectoryData {
 	}
 	
 	public double getServiceFees(int i) {
-		fees = serviceFees.get(i);
+		String f = serviceFees.get(i);
+		fees = Double.parseDouble(f);
 		return fees;
 	}
 }
