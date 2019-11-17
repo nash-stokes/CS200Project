@@ -33,7 +33,7 @@ public class ServiceData {
 	Matcher lettersMatch;
 
 	public ServiceData() {
-		//Default Provider
+		//Default Constructor
 	}
 
 	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName) {
