@@ -12,6 +12,7 @@ public class ServiceData {
 	private String serviceCode;
 	private String comments;
 	private double serviceFee;
+	private String memberName;
 
 	Scanner scanner = new Scanner(System.in);
 	
@@ -27,11 +28,15 @@ public class ServiceData {
 	Pattern onlyNums = Pattern.compile("[0-9]+");
 	Matcher numsMatch;
 	
+	//Use these to validate a string has only letters and spaces
+	Pattern onlyLetters = Pattern.compile("^[ A-Za-z]+$");
+	Matcher lettersMatch;
+
 	public ServiceData() {
 		//Default Provider
 	}
 
-	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee) {
+	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName) {
 		this.serviceDate = serviceDate;
 		this.serviceTime = serviceTime;
 		this.providerNumber = providerNumber;
@@ -39,6 +44,7 @@ public class ServiceData {
 		this.serviceCode = serviceCode;
 		this.comments = comments;
 		this.serviceFee = serviceFee;
+		this.memberName = memberName;
 	}
 
 	public String getServiceDate() {
@@ -138,5 +144,22 @@ public class ServiceData {
 
 	public void setServiceFee(double fee) {
 		this.serviceFee = fee;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String name) {
+		while(true) {
+			lettersMatch = onlyLetters.matcher(name);
+			if(name.length() > 25 || lettersMatch.matches() == false) {
+				System.out.print("Invalid name, please enter a valid name: ");
+				name = scanner.nextLine();
+			}
+			else
+				break;
+		}
+		this.memberName = name;
 	}
 }
