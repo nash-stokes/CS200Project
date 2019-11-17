@@ -1,4 +1,4 @@
-//package main;
+package main;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +17,7 @@ public class ServiceController {
         String providerNumber = IOController.getString();
         String memberNumber = IOController.getString();
 
-        ServiceData x = new ServiceData(IOController.getString(), IOController.getString(), providerNumber,
-                memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble());
+        ServiceData x = new ServiceData(IOController.getString(), IOController.getString(), providerNumber, memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble());
 
         serviceList.add(x);
         ProviderController.addService(providerNumber, x);
@@ -38,6 +37,7 @@ public class ServiceController {
         writing.close();
     }
 
+
     public int getCountServices() {
         return countServices;
     }
@@ -46,11 +46,7 @@ public class ServiceController {
         return totalFee;
     }
 
-    // UNCOMMENT ONCE DATA CLASS IMPLEMENTED
-    // public ServiceData[] getServiceList() {
-    // return serviceList;
-    // }
-
     public ArrayList<ServiceData> getServiceList() {
          return serviceList;
+    }
 }

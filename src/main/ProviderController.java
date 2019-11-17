@@ -8,8 +8,7 @@ public class ProviderController {
 
     public static void addProvider() {
         IOController.output("Input: name, street, city, state, ZIP, and provider number.");
-        ProviderData x = new ProviderData(IOController.getString(), IOController.getString(), IOController.getString(),
-                IOController.getString(), IOController.getString(), IOController.getString());
+        ProviderData x = new ProviderData(IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString());
         providerList.add(x);
         ServiceController.incrementNumProviders();
         IOController.output("Provider successfully added!");
@@ -99,5 +98,9 @@ public class ProviderController {
         }
 
         x.addService(x);
+    }
+
+    public static ArrayList<ProviderData> getProviderList() {
+        return providerList;
     }
 }

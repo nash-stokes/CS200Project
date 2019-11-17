@@ -1,10 +1,10 @@
-// package main;
+package main;
 
 import java.util.ArrayList;
 
 public class MemberController {
 
-    private ArrayList<MemberData> memberList = new ArrayList<MemberData>();
+    private static ArrayList<MemberData> memberList = new ArrayList<MemberData>();
 
 
     public static void addMember() {
@@ -94,5 +94,9 @@ public class MemberController {
         }
 
         x.addService(x);
+    }
+
+    public static ArrayList<MemberData> getMemberList() {
+        return memberList;
     }
 }

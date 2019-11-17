@@ -7,9 +7,9 @@ public class ProviderDirectoryData {
 	private static ArrayList<String> serviceCodes = new ArrayList<String>();
 	private static ArrayList<String> serviceNames = new ArrayList<String>();
 	private static ArrayList<String> serviceFees = new ArrayList<String>();
-	private String codes;
-	private String names;
-	private double fees;
+	private static String codes;
+	private static String names;
+	private static double fees;
 
 	public void readFile() throws IOException{
 		File file =  new File("ProviderDirectory.txt");
@@ -36,17 +36,17 @@ public class ProviderDirectoryData {
 		return serviceCodes.size();
 	}
 
-	public String getServiceCodes(int i) {
+	public static String getServiceCodes(int i) {
 		codes = serviceCodes.get(i);
 		return codes;
 	}
 	
-	public String getServiceNames(int i) {
+	public static String getServiceNames(int i) {
 		names = serviceNames.get(i);
 		return names;
 	}
 	
-	public double getServiceFees(int i) {
+	public static double getServiceFees(int i) {
 		String f = serviceFees.get(i);
 		fees = Double.parseDouble(f);
 		return fees;
