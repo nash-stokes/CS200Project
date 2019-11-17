@@ -15,18 +15,20 @@ public class ProviderReport {
   private String providerState;
   private String providerZIP;
   private ArrayList<ServiceData> service = new ArrayList<ServiceData>();
-  private int numOfConsults = service.getCountServices();
-  private float totalFee = services.getTotalFee();
-  
-  public ProviderReport(String providerName, String providerNumber, String providerAddress, String providerCity, String providerState, String providerZIP, ArrayList<ServiceData> service, int numOfConsults, float totalFee) {
-    this.providerName = providerName;
-    this.providerNumber = providerNumber;
-    this.providerAddress = providerAddress;
-    this.providerCity = providerCity;
-    this.providerZIP = providerZIP;
-    this.service = service;
-    this.numOfConsults = numOfConsults;
-    this.totalFee = totalFee;
+  private int numOfConsults = service.size();
+  private float totalFee = 0;
+
+  public ProviderReport(ProviderData obj) {
+    providerName = obj.getName();
+    providerNumber = obj.getProviderNumber();
+    providerAddress = obj.getStreet();
+    providerCity = obj.getCity();
+    providerZIP = obj.getZIP();
+    service = obj.getServiceList();
+    numOfConsults = service.size();
+    for (int i = 0; i < service.size(); i++) {
+        totalFee += service.get(i).getServiceFee();
+    }
   }
 
   public void printProviderReport() throws IOException {
@@ -46,12 +48,12 @@ public class ProviderReport {
 	
 	public void printServiceData(PrintWriter write) throws IOException{
 		for(int x = 0; x < service.size(); x++){
-		  write.println("Date of service: " + service.getServiceDate());
-		  write.println("Date and time data were received by the computer: " + service.getServiceTime());
-		  write.println("Member name: " + service.MemberData.getName());
-		  write.println("Member number: " + service.getMemberNumber());
-		  write.println("Service code: " + service.getServiceCode());
-		  write.println("Fee to be paid: "+ service.getServiceFee());
+		  write.println("Date of service: " + service.get(x).getServiceDate());
+		  write.println("Date and time data were received by the computer: " + service.get(x).getServiceTime());
+		  write.println("Member name: " + service.get(x).getMemberName()); // ERROR CURRENTLY BECAUSE ERIK'S DUMBASS FORGOT TO INCLUDE A MEMBERNAME ATTRIBUTE IN SERVICEDATA
+            write.println("Member number: " + service.get(x).getMemberNumber());
+		  write.println("Service code: " + service.get(x).getServiceCode());
+		  write.println("Fee to be paid: "+ service.get(x).getServiceFee());
 		  write.println();
 		}
 	}

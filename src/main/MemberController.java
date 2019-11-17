@@ -1,5 +1,6 @@
 package main;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 
 public class MemberController {
@@ -56,11 +57,11 @@ public class MemberController {
                                     break;
                                 case 3:
                                     IOController.output("Input new state.");
-                                    memberList.get(i).setState(IOController.getString())
+                                    memberList.get(i).setState(IOController.getString());
                                     break;
                                 case 4:
                                     IOController.output("Input new ZIP.");
-                                    memberList.get(i).setZIP(IOController.getString())
+                                    memberList.get(i).setZIP(IOController.getString());
                                     break;
                                 default:
                                     IOController.output("Invalid selection.");
@@ -86,14 +87,16 @@ public class MemberController {
     }
 
     public static void addService(String memberNumber, ServiceData newService) {
+        MemberData x = null;
+
         for (int i = 0; i < memberList.size(); i++) {
             if (memberList.get(i).getMemberNumber() == memberNumber) {
-                MemberData x = memberList.get(i);
+                x = memberList.get(i);
                 break;
             }
         }
 
-        x.addService(x);
+        x.addService(newService);
     }
 
     public static ArrayList<MemberData> getMemberList() {

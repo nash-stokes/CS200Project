@@ -10,7 +10,6 @@ public class ProviderController {
         IOController.output("Input: name, street, city, state, ZIP, and provider number.");
         ProviderData x = new ProviderData(IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString());
         providerList.add(x);
-        ServiceController.incrementNumProviders();
         IOController.output("Provider successfully added!");
     }
 
@@ -23,7 +22,6 @@ public class ProviderController {
                 break;
             }
         }
-        ServiceController.decrementNumProviders();
         IOController.output("Provider successfully removed!");
     }
 
@@ -57,11 +55,11 @@ public class ProviderController {
                                 break;
                             case 3:
                                 IOController.output("Input new state.");
-                                providerList.get(i).setState(IOController.getString())
+                                providerList.get(i).setState(IOController.getString());
                                 break;
                             case 4:
                                 IOController.output("Input new ZIP.");
-                                providerList.get(i).setZIP(IOController.getString())
+                                providerList.get(i).setZIP(IOController.getString());
                                 break;
                             default:
                                 IOController.output("Invalid selection.");
@@ -90,14 +88,16 @@ public class ProviderController {
     }
 
     public static void addService(String providerNumber, ServiceData newService) {
+        ProviderData x  = null;
+
         for (int i = 0; i < providerList.size(); i++) {
             if (providerList.get(i).getProviderNumber() == providerNumber) {
-                ProviderData x = providerList.get(i);
+                x = providerList.get(i);
                 break;
             }
         }
 
-        x.addService(x);
+        x.addService(newService);
     }
 
     public static ArrayList<ProviderData> getProviderList() {

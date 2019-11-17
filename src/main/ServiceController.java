@@ -7,13 +7,11 @@ import java.io.PrintWriter;
 
 public class ServiceController {
 
-    private ArrayList<ServiceData> serviceList = new ArrayList<ServiceData>();
-    private int countServices = 0;
-    private int numProviders = 0;
-    private float totalFee = 0;
-    private float individualFee = 0;
+    private static ArrayList<ServiceData> serviceList = new ArrayList<ServiceData>();
+    private static float totalFee = 0;
+    private static float individualFee = 0;
 
-    public void addService() {
+    public static void addService() {
         String providerNumber = IOController.getString();
         String memberNumber = IOController.getString();
 
@@ -24,7 +22,7 @@ public class ServiceController {
         MemberController.addService(memberNumber, x);
     }
 
-    public void emailPDFFile() throws IOException {
+    public static void emailPDFFile() throws IOException {
         FileWriter file = new FileWriter("Provider_Directory.txt");
         PrintWriter writing = new PrintWriter(file);
 
@@ -38,15 +36,20 @@ public class ServiceController {
     }
 
 
-    public int getCountServices() {
-        return countServices;
+    public static int getCountServices() {
+        return serviceList.size();
     }
 
-    public float getTotalFee() {
-        return totalFee;
+    public static double getTotalFee() {
+        double x = 0;
+        for (int i = 0; i < serviceList.size(); i++) {
+            x += serviceList.get(i).getServiceFee();
+        }
+
+        return x;
     }
 
-    public ArrayList<ServiceData> getServiceList() {
+    public static ArrayList<ServiceData> getServiceList() {
          return serviceList;
     }
 }
