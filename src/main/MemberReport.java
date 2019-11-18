@@ -12,8 +12,6 @@ public class MemberReport{
     String memberZIP;
     String serviceInfo;
 
-    FileWriter out = null;
-
     public void printMemberReport(){
         memberName = getMemberName();
         memberNumber = getMemberNumber();
@@ -23,27 +21,30 @@ public class MemberReport{
         memberZip = getMemberZIP();
         serviceInfo = getServiceInfo();
 
-        out = new FileWriter("MemberReport.txt");
+        FileWriter file = new FileWriter(memberName+".txt");
+        PrintWriter writing = new PrintWriter(file);
 
-        System.out.println("Member Name: " + memberName);
-        System.out.println("Member Number: " + memberNumber);
-        System.out.println("Member Address: " + memberAddress);
-        System.out.println("Member City: " + memberCity);
-        System.out.println("Member State: " + memberState);
-        System.out.println("Member ZIP: " + memberZIP);
+        writing.println("Member name: " + memberName);
+        writing.println("Member number: " + memberNumber);
+        writing.println("Member street address: " + memberAddress);
+        writing.println("Member city: " + memberCity);
+        writing.println("Member state: " + memberState);
+        writing.println("Member ZIP: " + memberZIP);
         System.out.println("Service Information: " + serviceInfo);
+        printServiceData(writing);
+        writing.close();
         
     }
 
-    // public void printProviderReport() throws IOException {
-    //     FileWriter file = new FileWriter(providerName+".txt");
+    // public void printMemberReport() throws IOException {
+    //     FileWriter file = new FileWriter(MemberName+".txt");
     //     PrintWriter writing = new PrintWriter(file);
-    //     writing.print("Provider name: " + providerName);
-    //     writing.println("Provider number: " + providerNumber);
-    //     writing.println("Provider street address: " + providerAddress);
-    //     writing.println("Provider city: " + providerCity);
-    //     writing.println("Provider state: " + providerState);
-    //     writing.println("Provider ZIP code: " + providerZIP);
+    //     writing.print("Member name: " + MemberName);
+    //     writing.println("Member number: " + MemberNumber);
+    //     writing.println("Member street address: " + MemberAddress);
+    //     writing.println("Member city: " + MemberCity);
+    //     writing.println("Member state: " + MemberState);
+    //     writing.println("Member ZIP code: " + MemberZIP);
     //     printServiceData(writing);
     //     writing.println("Total number of consultations with members" + numOfConsults);
     //     writing.println("Total fee for week" + totalFee);
