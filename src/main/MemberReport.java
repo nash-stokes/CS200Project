@@ -2,25 +2,34 @@
 package main;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class MemberReport{
-    String memberName;
-    String memberNumber;
-    String memberAddress;
-    String memberCity;
-    String memberState;
-    String memberZIP;
-    String serviceInfo;
+    private String memberName;
+    private String memberNumber;
+    private String memberAddress;
+    private String memberCity;
+    private String memberState;
+    private String memberZIP;
+    private ArrayList<ServiceData> service = new ArrayList<ServiceData>();
+    private int numOfConsults = service.size();
+    private String serviceDate;
+    private String providerName;
+    private String serviceName;
 
-    public void printMemberReport(){
-        memberName = getMemberName();
-        memberNumber = getMemberNumber();
-        memberAddress = getMemberAddress();
-        memberCity = getMemberCity();
-        memberState = getMemberState();
-        memberZip = getMemberZIP();
-        serviceInfo = getServiceInfo();
+    public MemberReport(MemberData obj){
+        memberName = obj.getMemberName();
+        memberNumber = obj.getMemberNumber();
+        memberAddress = obj.getMemberAddress();
+        memberCity = obj.getMemberCity();
+        memberState = obj.getMemberState();
+        memberZIP = obj.getMemberZIP();
+        service = obj.getServiceList();
+        numOfConsults = service.size();
+    }
+    
 
+    public void printMemberReport() throws IOException{
         FileWriter file = new FileWriter(memberName+".txt");
         PrintWriter writing = new PrintWriter(file);
 
@@ -29,37 +38,18 @@ public class MemberReport{
         writing.println("Member street address: " + memberAddress);
         writing.println("Member city: " + memberCity);
         writing.println("Member state: " + memberState);
-        writing.println("Member ZIP: " + memberZIP);
-        System.out.println("Service Information: " + serviceInfo);
+        writing.println("Member ZIP code: " + memberZIP);
         printServiceData(writing);
         writing.close();
-        
     }
 
-    // public void printMemberReport() throws IOException {
-    //     FileWriter file = new FileWriter(MemberName+".txt");
-    //     PrintWriter writing = new PrintWriter(file);
-    //     writing.print("Member name: " + MemberName);
-    //     writing.println("Member number: " + MemberNumber);
-    //     writing.println("Member street address: " + MemberAddress);
-    //     writing.println("Member city: " + MemberCity);
-    //     writing.println("Member state: " + MemberState);
-    //     writing.println("Member ZIP code: " + MemberZIP);
-    //     printServiceData(writing);
-    //     writing.println("Total number of consultations with members" + numOfConsults);
-    //     writing.println("Total fee for week" + totalFee);
-    //     writing.close();
-    // }
+    public void printServiceData(PrintWriter write) throws IOException{
+		for(int x = 0; x < service.size(); x++){
+		  write.println("Date of service: " + service.get(x).getServiceDate());
+          write.println("Provider name: " + service.get(x).getProviderName()); 
+		  write.println("Service name: " + service.get(x).getServiceName());
+		  write.println();
+		}
+	}
 
-    // public void printServiceData(PrintWriter write) throws IOException{
-	// 	for(int x = 0; x < service.size(); x++){
-	// 	  write.println("Date of service: " + service.getServiceDate());
-	// 	  write.println("Date and time data were received by the computer: " + service.getServiceTime());
-	// 	  write.println("Member name: " + service.MemberData.getName());
-	// 	  write.println("Member number: " + service.getMemberNumber());
-	// 	  write.println("Service code: " + service.getServiceCode());
-	// 	  write.println("Fee to be paid: "+ service.getServiceFee());
-	// 	  write.println();
-	// 	}
-	// }
 }
