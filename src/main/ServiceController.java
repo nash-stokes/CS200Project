@@ -15,26 +15,32 @@ public class ServiceController {
         String providerNumber = IOController.getString();
         String memberNumber = IOController.getString();
 
-        ServiceData x = new ServiceData(IOController.getString(), IOController.getString(), providerNumber, memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble());
+        ServiceData x = new ServiceData(IOController.getString(), IOController.getString(), providerNumber,
+                memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble());
 
         serviceList.add(x);
         ProviderController.addService(providerNumber, x);
         MemberController.addService(memberNumber, x);
     }
 
-    public static void emailPDFFile() throws IOException {
-        FileWriter file = new FileWriter("Provider_Directory.txt");
-        PrintWriter writing = new PrintWriter(file);
+    public static void emailPDFFile() {
+        try {
+            FileWriter file = new FileWriter("Provider_Directory.txt");
+            PrintWriter writing = new PrintWriter(file);
 
-        for (int i = 0; i < ProviderDirectoryData.getSize(); i++) {
-            writing.print(ProviderDirectoryData.getServiceNames(i) + " ");
-            writing.print(ProviderDirectoryData.getServiceCodes(i) + " ");
-            writing.println(ProviderDirectoryData.getServiceFees(i));
+            for (int i = 0; i < ProviderDirectoryData.getSize(); i++) {
+                writing.print(ProviderDirectoryData.getServiceNames(i) + " ");
+                writing.print(ProviderDirectoryData.getServiceCodes(i) + " ");
+                writing.println(ProviderDirectoryData.getServiceFees(i));
+            }
+            writing.close();
         }
 
-        writing.close();
-    }
+        catch (IOException e) {
+            System.out.println("File not found");
+        }
 
+    }
 
     public static int getCountServices() {
         return serviceList.size();
@@ -50,6 +56,6 @@ public class ServiceController {
     }
 
     public static ArrayList<ServiceData> getServiceList() {
-         return serviceList;
+        return serviceList;
     }
 }

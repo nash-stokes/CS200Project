@@ -1,24 +1,32 @@
+/** Name: Do Thien An Duong
+ * CWID: 11895098
+ */
+
 package main;
 
-import main.ProviderDirectoryData;
 import main.ServiceController;
-import main.ProviderControler;
+import main.ProviderController;
 
 public class ProviderTerminal {
   boolean authenticated = false;
-  ServiceController sController;
-  ProviderController pController;
 
+  /**
+   * Calls ServiceController to email the PDF file of Provider Directory to the
+   * provider if they are authenticated
+   */
   void getProviderDirectory() {
     if (authenticated)
-      sController.emailPDFFile();
+      ServiceController.emailPDFFile();
   }
 
   void manageService() {
 
   }
 
+  /**
+   * Calls the provider controller to validate the provider
+   */
   void authenticateProvider() {
-    authenticated = pController.validateProvider();
+    authenticated = ProviderController.validateProvider();
   }
 }

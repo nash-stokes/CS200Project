@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-// connect service controller to provider report for service data
+/**
+ * @author Sanghyun Jeon
+ * 
+ * This program creates accounts payable report for the manager to see. Oce called, it will create a textfile and save it onto the terminal for it to e sent as email.
+ */
 
 public class ProviderReport {
   private String providerName;

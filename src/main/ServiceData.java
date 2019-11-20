@@ -41,7 +41,14 @@ public class ServiceData {
 	 * the name of the member involved
 	*/
 	private String memberName;
-
+	/**
+	 * the name of the service
+	 */
+	private String serviceName;
+	/**
+	 * the name of the provider involved
+	 */
+	private String providerName;
 	Scanner scanner = new Scanner(System.in);
 	
 	/** 
@@ -86,7 +93,7 @@ public class ServiceData {
 	 * @param serviceFee the fee to be paid
 	 * @param memberName the name of the member involved
 	 */
-	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName) {
+	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName, String serviceName, String providerName) {
 		this.serviceDate = serviceDate;
 		this.serviceTime = serviceTime;
 		this.providerNumber = providerNumber;
@@ -95,6 +102,8 @@ public class ServiceData {
 		this.comments = comments;
 		this.serviceFee = serviceFee;
 		this.memberName = memberName;
+		this.serviceName = serviceName;
+		this.providerName = providerName;
 	}
 
 	/**
@@ -276,5 +285,41 @@ public class ServiceData {
 				break;
 		}
 		this.memberName = name;
+	}
+
+	public String getProviderName() {
+		return providerName;
+	}
+
+	public void setProviderName(String name) {
+		while(true) {
+			lettersMatch = onlyLetters.matcher(name);
+			if(name.length() > 25 || lettersMatch.matches() == false) {
+				System.out.print("Invalid name, please enter a valid name: ");
+				name = scanner.nextLine();
+			}
+			else
+				break;
+		}
+		this.providerName = name;
+	}
+		
+
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		while(true) {
+			lettersMatch = onlyLetters.matcher(serviceName);
+			if(serviceName.length() > 20 || lettersMatch.matches() == false) {
+				System.out.print("Invalid service name, please enter a valid service name: ");
+				serviceName = scanner.nextLine();
+			}
+			else
+				break;
+		}
+		this.serviceName = serviceName;
+	}
 	}
 }
