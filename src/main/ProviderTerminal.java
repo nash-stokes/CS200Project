@@ -2,7 +2,7 @@ package main;
 
 import main.ProviderDirectoryData;
 import main.ServiceController;
-import main.ProviderControler;
+import main.ProviderController;
 
 public class ProviderTerminal {
   boolean authenticated = false;
