@@ -3,6 +3,12 @@ package main;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * @author Sanghyun Jeon
+ * 
+ * This program creates accounts payable report for the manager to see. Oce called, it will create a textfile and save it onto the terminal for it to e sent as email.
+ */
+
 public class ProviderDirectoryData {
 	private static ArrayList<String> serviceCodes = new ArrayList<String>();
 	private static ArrayList<String> serviceNames = new ArrayList<String>();
