@@ -10,13 +10,40 @@ import java.util.ArrayList;
  */
 
 public class ProviderDirectoryData {
+	/**
+	 * 
+	 */
 	private static ArrayList<String> serviceCodes = new ArrayList<String>();
+
+	/**
+	 * 
+	 */
 	private static ArrayList<String> serviceNames = new ArrayList<String>();
+
+	/**
+	 * 
+	 */
 	private static ArrayList<String> serviceFees = new ArrayList<String>();
+	
+	/**
+	 * 
+	 */
 	private static String codes;
+
+	/**
+	 * 
+	 */
 	private static String names;
+
+	/**
+	 * 
+	 */
 	private static double fees;
 
+	/**
+	 * 
+	 * @throws IOException
+	 */
 	public void readFile() throws IOException{
 		File file =  new File("ProviderDirectory.txt");
 		FileReader fr = new FileReader(file);
@@ -38,20 +65,36 @@ public class ProviderDirectoryData {
 		fr.close();
 	}	
 
+	/**
+	 * 
+	 */
 	public static int getSize() {
 		return serviceCodes.size();
 	}
 
+	/**
+	 * 
+	 */
 	public static String getServiceCodes(int i) {
 		codes = serviceCodes.get(i);
 		return codes;
 	}
 	
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	public static String getServiceNames(int i) {
 		names = serviceNames.get(i);
 		return names;
 	}
 	
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	public static double getServiceFees(int i) {
 		String f = serviceFees.get(i);
 		fees = Double.parseDouble(f);
