@@ -8,33 +8,6 @@ import java.io.*;
  * @author Lyle Stokes
  */
 public class EFTFileData{
-    String providerName;
-    String providerNumber;
-    float transferAmount = (int)(Math.random()* 41 * 15);
-
-    public String getProviderName(){
-        return providerName;
-    }
-
-    public void setProviderName(final String providerName) {
-        this.providerName = providerName;
-    }
-
-    public String getProviderNumber() {
-        return providerNumber;
-    }
-
-    public void setProviderNumber(final String providerNumber) {
-        this.providerNumber = providerNumber;
-    }
-
-    public float getTransferAmount() {
-        return transferAmount;
-    }
-
-    public void setTransferAmount(final float transferAmount) {
-        this.transferAmount = transferAmount;
-    }
     /**
      * Iterates through provider list, printing provider info and fees in created file
      * @throws IOException
