@@ -93,7 +93,7 @@ public class ServiceData {
 	 * @param serviceFee the fee to be paid
 	 * @param memberName the name of the member involved
 	 */
-	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName, String serviceName) {
+	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName, String serviceName, String providerName) {
 		this.serviceDate = serviceDate;
 		this.serviceTime = serviceTime;
 		this.providerNumber = providerNumber;
@@ -103,6 +103,7 @@ public class ServiceData {
 		this.serviceFee = serviceFee;
 		this.memberName = memberName;
 		this.serviceName = serviceName;
+		this.providerName = providerName;
 	}
 
 	/**
