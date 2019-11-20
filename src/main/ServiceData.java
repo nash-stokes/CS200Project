@@ -45,7 +45,10 @@ public class ServiceData {
 	 * the name of the service
 	 */
 	private String serviceName;
-
+	/**
+	 * the name of the provider involved
+	 */
+	private String providerName;
 	Scanner scanner = new Scanner(System.in);
 	
 	/** 
@@ -282,6 +285,24 @@ public class ServiceData {
 		}
 		this.memberName = name;
 	}
+
+	public String getProviderName() {
+		return providerName;
+	}
+
+	public void setProviderName(String name) {
+		while(true) {
+			lettersMatch = onlyLetters.matcher(name);
+			if(name.length() > 25 || lettersMatch.matches() == false) {
+				System.out.print("Invalid name, please enter a valid name: ");
+				name = scanner.nextLine();
+			}
+			else
+				break;
+		}
+		this.providerName = name;
+	}
+		
 
 	public String getServiceName() {
 		return serviceName;
