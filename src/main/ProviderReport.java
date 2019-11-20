@@ -12,16 +12,55 @@ import java.util.ArrayList;
  */
 
 public class ProviderReport {
+  /**
+   * The variable providerName is for holding space for 
+   */
   private String providerName;
+
+  /**
+   * 
+   */
   private String providerNumber;
+
+  /**
+   * 
+   */
   private String providerAddress;
+
+  /**
+   * 
+   */
   private String providerCity;
+
+  /**
+   * 
+   */
   private String providerState;
+
+  /**
+   * 
+   */
   private String providerZIP;
+
+  /**
+   * 
+   */
   private ArrayList<ServiceData> service = new ArrayList<ServiceData>();
+
+  /**
+   * 
+   */
   private int numOfConsults = service.size();
+
+  /**
+   * 
+   */
   private float totalFee = 0;
 
+  /**
+   * 
+   * @param obj
+   */
   public ProviderReport(ProviderData obj) {
     providerName = obj.getName();
     providerNumber = obj.getProviderNumber();
@@ -35,6 +74,10 @@ public class ProviderReport {
     }
   }
 
+  /**
+   * 
+   * @throws IOException
+   */
   public void printProviderReport() throws IOException {
     FileWriter file = new FileWriter(providerName+".txt");
     PrintWriter writing = new PrintWriter(file);
@@ -49,7 +92,12 @@ public class ProviderReport {
     writing.println("Total fee for week" + totalFee);
     writing.close();
 	}
-	
+  
+  /**
+   * 
+   * @param write
+   * @throws IOException
+   */
 	public void printServiceData(PrintWriter write) throws IOException{
 		for(int x = 0; x < service.size(); x++){
 		  write.println("Date of service: " + service.get(x).getServiceDate());

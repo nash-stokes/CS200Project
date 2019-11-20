@@ -96,10 +96,9 @@ public class MemberReport{
      */
     public void printServiceData(PrintWriter write) throws IOException{
 		for(int x = 0; x < numOfConsults; x++){
-		  write.println("Date of service: " + service.get(x).getServiceDate());
-      write.println("Provider name: " + service.get(x).getName()); 
+      write.println("Date of service: " + service.get(x).getServiceDate());
+      write.println("Provider name: " + service.get(x).getProviderName()); 
 		  write.println("Service name: " + service.get(x).getServiceName());
-		  write.println();
 		}
 	}
 
