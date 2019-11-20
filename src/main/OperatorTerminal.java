@@ -1,10 +1,19 @@
-//Nash
 package main;
 
+/**
+ * The Operator Terminal class stores the providers to be paid and how much to pay them.
+ * @author Lyle Stokes
+ */
 public class OperatorTerminal{
+    /**
+     * Takes parameters to carryout operator's intended action.
+     * 0 represents a member account action.
+     * 1 represents a provider account action.
+     * @param accType determines account type to be operated on
+     * @param action determines action to perform on account
+     */
     public void manageAccount(boolean accType, int action){
-        //MEMBER OPERATIONS
-        if (accType == 0){
+        if (!accType){
             if (action == 0){
                 MemberController.addMember();
             }
@@ -18,7 +27,6 @@ public class OperatorTerminal{
                 MemberController.validateMember();
             }
         }
-        //PROVIDER OPERATIONS
         else{
             if (action == 0){
                 ProviderController.addProvider();
