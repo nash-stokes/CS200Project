@@ -321,5 +321,4 @@ public class ServiceData {
 		}
 		this.serviceName = serviceName;
 	}
-	}
 }
