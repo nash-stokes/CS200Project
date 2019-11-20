@@ -41,6 +41,10 @@ public class ServiceData {
 	 * the name of the member involved
 	*/
 	private String memberName;
+	/**
+	 * the name of the service
+	 */
+	private String serviceName;
 
 	Scanner scanner = new Scanner(System.in);
 	
@@ -86,7 +90,7 @@ public class ServiceData {
 	 * @param serviceFee the fee to be paid
 	 * @param memberName the name of the member involved
 	 */
-	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName) {
+	public ServiceData(String serviceDate, String serviceTime, String providerNumber, String memberNumber, String serviceCode, String comments, double serviceFee, String memberName, String serviceName) {
 		this.serviceDate = serviceDate;
 		this.serviceTime = serviceTime;
 		this.providerNumber = providerNumber;
@@ -95,6 +99,7 @@ public class ServiceData {
 		this.comments = comments;
 		this.serviceFee = serviceFee;
 		this.memberName = memberName;
+		this.serviceName = serviceName;
 	}
 
 	/**
@@ -276,5 +281,23 @@ public class ServiceData {
 				break;
 		}
 		this.memberName = name;
+	}
+
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		while(true) {
+			lettersMatch = onlyLetters.matcher(serviceName);
+			if(serviceName.length() > 20 || lettersMatch.matches() == false) {
+				System.out.print("Invalid service name, please enter a valid service name: ");
+				serviceName = scanner.nextLine();
+			}
+			else
+				break;
+		}
+		this.serviceName = serviceName;
+	}
 	}
 }
