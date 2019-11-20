@@ -45,7 +45,6 @@ public class EFTFileData{
         for (int i = 0; i < ProviderController.getProviderList().size(); i++){
             writing.println("Provider name :" + ProviderController.getProviderList().get(i).getName());
             writing.println("Provider number :" + ProviderController.getProviderList().get(i).getProviderNumber());
-            //Get Simon to write getTotalFee method
             writing.println("Total fee for period :" + (int)(Math.random() * 41 * 15));
         }
         writing.close();
