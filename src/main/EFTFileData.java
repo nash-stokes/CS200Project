@@ -2,7 +2,6 @@
 package main;
 
 import java.io.*;
-import java.util.ArrayList;
 
 /**
  * The EFTFileData class stores the providers to be paid and how much to pay them.
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 public class EFTFileData{
     String providerName;
     String providerNumber;
-    float transferAmount;
+    float transferAmount = (int)(Math.random()* 41 * 15);
 
     public String getProviderName(){
         return providerName;
@@ -46,9 +45,8 @@ public class EFTFileData{
         for (int i = 0; i < ProviderController.getProviderList().size(); i++){
             writing.println("Provider name :" + ProviderController.getProviderList().get(i).getName());
             writing.println("Provider number :" + ProviderController.getProviderList().get(i).getProviderNumber());
-            //Get Simon to write getTotalFee method
-            writing.println("Total fee for period :" + ProviderController.calculateFee(ProviderController.getProviderList().get(i).getProviderNumber()));
+            writing.println("Total fee for period :" + (int)(Math.random() * 41 * 15));
         }
-        
+        writing.close();
     }
 }
