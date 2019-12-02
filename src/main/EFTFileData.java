@@ -12,8 +12,6 @@ public class EFTFileData {
     /**
      * Iterates through provider list, printing provider info and fees in created
      * file
-     * 
-     * @throws IOException
      */
     public static void printEFTReport() {
         try {
