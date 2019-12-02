@@ -1,11 +1,24 @@
+/**
+ * This class stores and manages the providers which are part of the ChocAn network.
+ *
+ * @author Jonathan Pence
+ * @version 1.0
+ */
 package main;
 
 import java.util.ArrayList;
 
 public class ProviderController {
 
+    /**
+     * ArrayList of ProviderData which stores the providers who are a part of the ChocAn network.
+     */
     private static ArrayList<ProviderData> providerList = new ArrayList<ProviderData>();
 
+    /**
+     * Adds a provider by prompting the user for information, which is then funneled into a parameterized ProviderData constructor.
+     * Then, stores the new ProviderData into the providerList arraylist.
+     */
     public static void addProvider() {
         IOController.output("Input: name, street, city, state, ZIP, and provider number.");
         ProviderData x = new ProviderData(IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString());
@@ -13,6 +26,9 @@ public class ProviderController {
         IOController.output("Provider successfully added!");
     }
 
+    /**
+     * Deletes a provider given the number of a provider which is prompted for within the method.
+     */
     public static void deleteProvider() {
         IOController.output("Input provider number of provider you wish to remove.");
         String providerNumber = IOController.getString();
@@ -25,6 +41,9 @@ public class ProviderController {
         IOController.output("Provider successfully removed!");
     }
 
+    /**
+     * Prompts the user to input the number of the provider they wish to update, then the field they wish to update.
+     */
     public static void updateProvider() {
         String providerNumber = "0";
         int fieldChoice = 0;
@@ -72,6 +91,12 @@ public class ProviderController {
         }
     }
 
+    /**
+     * Validates a provider by checking a given provider number against all the existing providers which are stored within the system.
+     *
+     * @return true if a match exists
+     * @return false if a match isn't found
+     */
     public static boolean validateProvider() {
         String providerNumber;
         IOController.output("Enter provider number of provider you wish to validate.");
@@ -87,6 +112,12 @@ public class ProviderController {
         return false;
     }
 
+    /**
+     * Adds a service to a specified provider, given a valid provider number and service.
+     *
+     * @param providerNumber The provider number which specifies which ProviderData object to store the ServiceData within.
+     * @param newService The ServiceData which will be stored within a ProviderData object.
+     */
     public static void addService(String providerNumber, ServiceData newService) {
         ProviderData x  = null;
 
@@ -100,6 +131,11 @@ public class ProviderController {
         x.addService(newService);
     }
 
+    /**
+     * Gets the list of all providers who are a part of the ChocAn network.
+     *
+     * @return ArrayList<ProviderData> which is populated with ProviderData objects which correspond to the providers who are a part of the ChocAn network.
+     */
     public static ArrayList<ProviderData> getProviderList() {
         return providerList;
     }
