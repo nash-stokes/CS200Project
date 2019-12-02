@@ -40,7 +40,12 @@ public class ServiceController {
         IOController.output("Enter the following information in this order: service date, service time, service code, optional comments (if none just leave blank), service fee, member name, service name, and provider name.");
 
         ServiceData x = new ServiceData(IOController.getString(), IOController.getString(), providerNumber,
+<<<<<<< HEAD
                 memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble(), IOController.getString(), IOController.getString(), IOController.getString());
+=======
+                memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble(),
+                IOController.getString(), IOController.getString(), IOController.getString());
+>>>>>>> 9141d58b5ce436db562ea042a2a2a6cec1dcbcdf
 
         serviceList.add(x);
         ProviderController.addService(providerNumber, x);

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ReportController {
+<<<<<<< HEAD
     /**
      * Triggers the accounts payable report to be generated and printed.
      * @throws IOException
@@ -30,8 +31,29 @@ public class ReportController {
     for (int i = 0; i < providerList.size(); i++) {
         ProviderReport x = new ProviderReport(providerList.get(i));
         x.printProviderReport();
+=======
+    public void generateAccountsPayable() {
+        try {
+            AccountsPayableReport.printAccountsPayableReport();
+
+        } catch (IOException e) {
+            System.out.println("File not found");
+        }
     }
-}
+
+    public void generateProviderReport() { // finish this
+        ArrayList<ProviderData> providerList = ProviderController.getProviderList();
+        for (int i = 0; i < providerList.size(); i++) {
+            ProviderReport x = new ProviderReport(providerList.get(i));
+            try {
+                x.printProviderReport();
+            } catch (IOException e) {
+                System.out.println("File not found");
+            }
+
+        }
+>>>>>>> 9141d58b5ce436db562ea042a2a2a6cec1dcbcdf
+    }
 
     /**
      * Generates and prints a member report for each member found within the
@@ -42,15 +64,26 @@ public class ReportController {
         ArrayList<MemberData> memberList = MemberController.getMemberList();
         for (int i = 0; i < memberList.size(); i++) {
             MemberReport x = new MemberReport(memberList.get(i));
-            x.printMemberReport();
+            try {
+                x.printMemberReport();
+            }
+
+            catch (IOException e) {
+                System.out.println("File not found");
+            }
+
         }
     }
 
+<<<<<<< HEAD
     /**
      * Triggers the generation and printing of the EFT report.
      * @throws IOException
      */
     public void generateEFTFile() throws IOException { //Error should resolve when Nash finishes his classes
+=======
+    public void generateEFTFile() { // Error should resolve when Nash finishes his classes
+>>>>>>> 9141d58b5ce436db562ea042a2a2a6cec1dcbcdf
         EFTFileData.printEFTReport();
     }
 }
