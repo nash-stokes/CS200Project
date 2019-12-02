@@ -7,12 +7,13 @@ import main.IOController;
 
 public class MainApplication {
   public static void main(String[] args) {
-    System.out.println("Which terminal do you want to access?");
-    System.out.println("1 - Manager Terminal");
-    System.out.println("2 - Operator Terminal");
-    System.out.println("3 - Provider Terminal");
-    System.out.println("4 - Quit");
+
     while (true) {
+      System.out.println("Which terminal do you want to access?");
+      System.out.println("1 - Manager Terminal");
+      System.out.println("2 - Operator Terminal");
+      System.out.println("3 - Provider Terminal");
+      System.out.println("4 - Quit");
       int input = main.IOController.getInt();
       if (input == 4) {
         break;

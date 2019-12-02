@@ -18,11 +18,7 @@ public class ManagerTerminal {
         System.out.println("Invalid report type, please try again.");
         reportType = IOController.getInt();
       }
-      System.out.print("LOL");
-
-      if (reportType == 4) {
-        break;
-      } else {
+      if (reportType != 4) {
         switch (reportType) {
         case 0:
           ReportController.generateAccountsPayable();
@@ -38,8 +34,10 @@ public class ManagerTerminal {
           break;
         }
       }
-      System.out.println("OK");
 
+      else {
+        break;
+      }
     }
   }
 }
