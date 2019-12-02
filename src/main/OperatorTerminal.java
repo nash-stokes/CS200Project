@@ -12,7 +12,7 @@ public class OperatorTerminal{
      * @param accType determines account type to be operated on
      * @param action determines action to perform on account
      */
-    public void manageAccount(boolean accType, int action){
+	public void manageAccount(boolean accType, int action){
         if (!accType){
             if (action == 0){
                 MemberController.addMember();
