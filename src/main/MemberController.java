@@ -1,13 +1,25 @@
+/**
+ * This class stores and manages the MemberData objects which correspond to the members of the ChocAn network.
+ *
+ * @author Jonathan Pence
+ * @version 1.0
+ */
+
 package main;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 
 public class MemberController {
 
+    /**
+     * ArrayList which stores the MemberData objects that correspond to the members of the ChocAn network.
+     */
     private static ArrayList<MemberData> memberList = new ArrayList<MemberData>();
 
-
+    /**
+     * Prompts the user for information on a member, which then is funneled into a MemberData constructor.
+     * The new MemberData object is then stored into the arraylist.
+     */
     public static void addMember() {
         IOController.output("Input: name, street, city, state, ZIP, and member number.");
         MemberData x = new MemberData(IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString(), IOController.getString());
@@ -15,6 +27,9 @@ public class MemberController {
         IOController.output("Member successfully added!");
     }
 
+    /**
+     * Prompts the user for a member number, and then deletes the MemberData object from the arraylist that corresponds with that number.
+     */
     public static void deleteMember() {
         IOController.output("Input member number of member you wish to remove.");
         String memberNumber = IOController.getString();
@@ -27,6 +42,9 @@ public class MemberController {
         IOController.output("Member successfully removed!");
     }
 
+    /**
+     * Prompts the user to input a member number, after which the user is prompted to edit a certain field of the MemberData which corresponds to the given member number.
+     */
     public static void updateMember() {
         String memberNumber = "0";
         int fieldChoice = 0;
@@ -74,6 +92,12 @@ public class MemberController {
             }
     }
 
+    /**
+     * Prompts a the user for a member number, then checks to see if that member number corresponds to any MemberData which exists in the array list.
+     *
+     * @return true if there exists a MemberData object which corresponds to the given member number
+     * @return false if such a MemberData does not exist
+     */
     public static boolean validateMember() {
         String memberNumber;
         IOController.output("Enter member number of member you wish to validate.");
@@ -86,6 +110,12 @@ public class MemberController {
         return false;
     }
 
+    /**
+     * Adds a service to the corresponding MemberData
+     *
+     * @param memberNumber given member number used to isolate the MemberData object that will have a service added to it
+     * @param newService the service to be added
+     */
     public static void addService(String memberNumber, ServiceData newService) {
         MemberData x = null;
 
@@ -99,6 +129,11 @@ public class MemberController {
         x.addService(newService);
     }
 
+    /**
+     * Get function for the ArrayList<MemberData> which corresponds to the members who are a part of the ChocAn network.
+     *
+     * @return the arraylist which stores the MemberData objects that correspond to the members
+     */
     public static ArrayList<MemberData> getMemberList() {
         return memberList;
     }
