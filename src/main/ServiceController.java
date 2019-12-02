@@ -16,7 +16,8 @@ public class ServiceController {
         String memberNumber = IOController.getString();
 
         ServiceData x = new ServiceData(IOController.getString(), IOController.getString(), providerNumber,
-                memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble());
+                memberNumber, IOController.getString(), IOController.getString(), IOController.getDouble(),
+                IOController.getString(), IOController.getString(), IOController.getString());
 
         serviceList.add(x);
         ProviderController.addService(providerNumber, x);
