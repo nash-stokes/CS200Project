@@ -17,10 +17,17 @@ public class EFTFileData {
         try {
             FileWriter file = new FileWriter("EFTFileData.txt");
             PrintWriter writing = new PrintWriter(file);
+            double sum = 0;
+            int numServ = 0;
             for (int i = 0; i < ProviderController.getProviderList().size(); i++) {
                 writing.println("Provider name :" + ProviderController.getProviderList().get(i).getName());
                 writing.println("Provider number :" + ProviderController.getProviderList().get(i).getProviderNumber());
-                writing.println("Total fee for period :" + (int) (Math.random() * 41 * 15));
+                numServ = ProviderController.getProviderList().get(i).getServiceList().size();
+                for(int j = 0; j < numServ; j++) {
+                	sum = sum + ProviderController.getProviderList().get(i).getServiceList().get(j).getServiceFee();
+                }
+                writing.println("Total fee for period :" + sum);
+                sum = 0;
             }
             writing.close();
         }
