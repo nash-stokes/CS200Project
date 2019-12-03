@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"main","l":"EFTFileData"},{"p":"main","l":"MemberReport"},{"p":"main","l":"OperatorTerminal"}]
