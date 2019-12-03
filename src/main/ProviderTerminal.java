@@ -25,7 +25,7 @@ public class ProviderTerminal {
     boolean authenticated = ProviderController.validateProvider();
     if (authenticated) {
       System.out.println("Please choose your actions:");
-      System.out.println("")
+      System.out.println("");
       boolean valid = MemberController.validateMember();
       if (valid) {
         System.out.println("Validated");
