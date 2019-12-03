@@ -81,6 +81,10 @@ public class MemberController {
                                     IOController.output("Input new ZIP.");
                                     memberList.get(i).setZIP(IOController.getString());
                                     break;
+                                case 5:
+                                    IOController.output("Input 1 to toggle status. current status: " + memberList.get(i).getStatus());
+                                	memberList.get(i).setStatus(IOController.getInt());
+                                	break;
                                 default:
                                     IOController.output("Invalid selection.");
                                     break;

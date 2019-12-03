@@ -80,6 +80,10 @@ public class ProviderController {
                                 IOController.output("Input new ZIP.");
                                 providerList.get(i).setZIP(IOController.getString());
                                 break;
+                            case 5:
+                                IOController.output("Input 1 to toggle status. current status: " + providerList.get(i).getStatus());
+                                providerList.get(i).setStatus(IOController.getInt());
+                                break;
                             default:
                                 IOController.output("Invalid selection.");
                                 break;

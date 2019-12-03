@@ -18,6 +18,10 @@ public class AccountsPayableReport {
   */
   private static double feeTotal;
 
+  /** finalProvider is the total number of provider accounts payable. 
+   * */
+  private static int finalProvider;
+
   /** The variable finalConsults is the overall number of services that all 
    * the providers has provided for the members.
   */
@@ -37,15 +41,18 @@ public class AccountsPayableReport {
     PrintWriter writing = new PrintWriter(file);
     writing.println("Providers to be paid | Number of Consultations | Total Fee: ");
     for (int x = 0; x < ProviderController.getProviderList().size(); x++) {
-      numOfConsults =  ServiceController.getServiceList().size();
-      feeTotal = ServiceController.getTotalFee(); 
-      writing.println(ProviderController.getProviderList().get(x).getName() 
+      if(ProviderController.getProviderList().get(x).getStatus()) {
+        numOfConsults =  ServiceController.getServiceList().size();
+        feeTotal = ServiceController.getTotalFee(); 
+        writing.println(ProviderController.getProviderList().get(x).getName() 
           + " | " + numOfConsults + " | " + feeTotal);
-      finalConsults = finalConsults + numOfConsults;
-      finalFeeTotal = finalFeeTotal + feeTotal;
+        finalProvider+=1;
+        finalConsults = finalConsults + numOfConsults;
+        finalFeeTotal = finalFeeTotal + feeTotal;
+      }
     }
     writing.println();
-    writing.println("Total number of providers: " + ProviderController.getProviderList().size());
+    writing.println("Total number of providers: " + finalProvider);
     writing.println("Total number of consultations: " + finalConsults);
     writing.println("Total Fee: " + finalFeeTotal);
     writing.close();

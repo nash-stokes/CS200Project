@@ -31,6 +31,10 @@ public class PersonData {
    */
   private String ZIP;
   /**
+   * the status of the provider or member
+   */
+  private boolean status = false;
+  /**
    * List of services for the provider or member.
    */
   private ArrayList<ServiceData> serviceList = new ArrayList<ServiceData>(); 
@@ -73,6 +77,7 @@ public class PersonData {
     setCity(city);
     setState(state);
     setZIP(ZIP);
+    setStatus(1);
   }
 	
   /**
@@ -198,6 +203,30 @@ public class PersonData {
       }
     }
     this.ZIP = ZIP;
+  }
+
+  /**
+   * setter for validity.
+   * @param i the value validity is to be set to
+   */
+  public void setStatus(int i){
+    if(i = 1){
+      validity = !validity;
+    }
+    else{
+      System.out.println("Cancelled status change");
+    }
+  }
+
+  public String getStatus(){ 
+    String validMsg = "Valid Status";
+    String invalidMsg = "Invalid Status";
+    if(validity = false){
+      return invalidMsg;
+    }
+    else{
+      return validMsg;
+    }
   }
 
   /**
