@@ -87,7 +87,6 @@ public class MemberReport{
         writing.close();
     }
 
-    //ASK ABOUT MISSING METHODS (TOTAL FEE) TOMORROW
     /**
      * Iterates through the list of services provided to member
      * and prints details to member's file.
