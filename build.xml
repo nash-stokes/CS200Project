@@ -1,84 +1,249 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="fall2019team4">
-    <property environment="env"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="12"/>
-    <property name="source" value="12"/>
-    <path id="JUnit 5.libraryclasspath">
-        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.2.0.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.1.0.v20190826-0900.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
-    </path>
-    <path id="fall2019team4.classpath">
-        <pathelement location="bin"/>
-        <path refid="JUnit 5.libraryclasspath"/>
-    </path>
-    <path id="run.Main (1).classpath">
-        <path refid="fall2019team4.classpath"/>
-        <path refid="JUnit 5.libraryclasspath"/>
-    </path>
-    <path id="run.MainApplication.classpath">
-        <path refid="fall2019team4.classpath"/>
-        <path refid="JUnit 5.libraryclasspath"/>
-    </path>
-    <target name="init">
-        <mkdir dir="bin"/>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src">
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="bin"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="fall2019team4.classpath"/>
-        </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
-    <target name="Main (1)">
-        <java classname="main.Main" failonerror="true" fork="yes">
-            <classpath refid="run.Main (1).classpath"/>
-        </java>
-    </target>
-    <target name="MainApplication">
-        <java classname="main.MainApplication" failonerror="true" fork="yes">
-            <classpath refid="run.MainApplication.classpath"/>
-        </java>
-    </target>
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="fall2019team4" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.klib"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module fall2019team4 -->
+  
+  <dirname property="module.fall2019team4.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.fall2019team4" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.fall2019team4" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.fall2019team4" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.fall2019team4" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="fall2019team4.output.dir" value="${module.fall2019team4.basedir}/bin"/>
+  <property name="fall2019team4.testoutput.dir" value="${module.fall2019team4.basedir}/bin"/>
+  
+  <path id="fall2019team4.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="fall2019team4.module.production.classpath">
+    <path refid="${module.jdk.classpath.fall2019team4}"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  <path id="fall2019team4.runtime.production.module.classpath">
+    <pathelement location="${fall2019team4.output.dir}"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  <path id="fall2019team4.module.classpath">
+    <pathelement location="${fall2019team4.output.dir}"/>
+    <path refid="${module.jdk.classpath.fall2019team4}"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  <path id="fall2019team4.runtime.module.classpath">
+    <pathelement location="${fall2019team4.output.dir}"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.fall2019team4">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.fall2019team4">
+    <patternset refid="excluded.from.module.fall2019team4"/>
+  </patternset>
+  
+  <path id="fall2019team4.module.sourcepath">
+    <dirset dir="${module.fall2019team4.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.fall2019team4" depends="compile.module.fall2019team4.production,compile.module.fall2019team4.tests" description="Compile module fall2019team4"/>
+  
+  <target name="compile.module.fall2019team4.production" depends="register.custom.compilers" description="Compile module fall2019team4; production classes">
+    <mkdir dir="${fall2019team4.output.dir}"/>
+    <javac2 destdir="${fall2019team4.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.fall2019team4}/javac">
+      <compilerarg line="${compiler.args.fall2019team4}"/>
+      <bootclasspath refid="fall2019team4.module.bootclasspath"/>
+      <classpath refid="fall2019team4.module.production.classpath"/>
+      <src refid="fall2019team4.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.fall2019team4"/>
+    </javac2>
+    
+    <copy todir="${fall2019team4.output.dir}">
+      <fileset dir="${module.fall2019team4.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.fall2019team4.tests" depends="register.custom.compilers,compile.module.fall2019team4.production" description="compile module fall2019team4; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.fall2019team4" description="cleanup module">
+    <delete dir="${fall2019team4.output.dir}"/>
+    <delete dir="${fall2019team4.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.fall2019team4" description="cleanup all">
+    <delete dir="bin"/>
+  </target>
+
+  <target name="jar" depends="compile.module.fall2019team4" description="jar file">
+    <jar jarfile="ChocAn.jar" basedir="${fall2019team4.output.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="main.MainApplication"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="build.modules" depends="init, clean, compile.module.fall2019team4, jar" description="build all modules"/>
+
+  <target name="all" depends="build.modules" description="build all"/>
 </project>
