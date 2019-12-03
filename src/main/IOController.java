@@ -21,9 +21,9 @@ public class IOController {
      * @return the string inputted by the user.
      */
     static String getString() {
-        String x = kb.nextLine();
-
-        return x;
+        while (kb.hasNextLine())
+            kb.nextLine();
+        return kb.nextLine();
     }
 
     /**
@@ -32,9 +32,7 @@ public class IOController {
      * @return the float inputted by the user.
      */
     static float getFloat() {
-        float x = kb.nextFloat();
-
-        return x;
+        return kb.nextFloat();
     }
 
     /**
@@ -43,9 +41,7 @@ public class IOController {
      * @return the int inputted by the user.
      */
     static int getInt() {
-        int x = kb.nextInt();
-
-        return x;
+        return kb.nextInt();
     }
 
     /**
@@ -54,9 +50,7 @@ public class IOController {
      * @return the double inputted by the user.
      */
     static double getDouble() {
-        double x = kb.nextDouble();
-
-        return x;
+        return kb.nextDouble();
     }
 
     /**

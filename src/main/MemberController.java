@@ -103,9 +103,14 @@ public class MemberController {
      * @return false if such a MemberData does not exist
      */
     public static boolean validateMember() {
-        String memberNumber;
+        if (memberList.size() == 0)
+        {
+            IOController.output("No member exists to validate!");
+            return false;
+        }
+
         IOController.output("Enter member number of member you wish to validate.");
-        memberNumber = IOController.getString();
+        String memberNumber = IOController.getString();
         for (int i = 0; i < memberList.size(); i++) {
             if (memberNumber == memberList.get(i).getMemberNumber())
                 return true;
