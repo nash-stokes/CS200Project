@@ -147,6 +147,14 @@ public class ProviderController {
         return false;
     }
 
+    /**
+     * Similar to the above verification function, however this method simply accepts a String as a parameter and returns whether or not it's a valid
+     * provider number without prompting the user or confirming/denying the validation through a print method.
+     * 
+     * @param providerNumber a valid provider number which may or may not be validated
+     * @return true if providerNumber is an existent provider number
+     * @return false if providerNumber is a nonexistent provider number
+     */
     public static boolean validateCode(String providerNumber) {
         for (int i = 0; i < providerList.size(); i++) {
             if (providerList.get(i).getProviderNumber().equals(providerNumber))

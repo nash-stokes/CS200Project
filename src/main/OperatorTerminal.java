@@ -38,6 +38,10 @@ public class OperatorTerminal {
     }
   }
 
+  /**
+   * This function is responsible for prompting the user what account type they would like to interact with. Furthermore, it will also prompt the user for what kind of operation they
+   * would like to perform on that acount type.
+   */
   public static void run() {
     while (true) {
 

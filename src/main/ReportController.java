@@ -51,7 +51,7 @@ public class ReportController {
    * 
    * @throws IOException
    */
-  public static void generateMemberReport() { // Error should resolve when Nash finishes his classes
+  public static void generateMemberReport() {
     ArrayList<MemberData> memberList = MemberController.getMemberList();
     for (int i = 0; i < memberList.size(); i++) {
       MemberReport x = new MemberReport(memberList.get(i));
@@ -72,7 +72,7 @@ public class ReportController {
    * 
    * @throws IOException
    */
-  public static void generateEFTFile() { // Error should resolve when Nash finishes his classes
+  public static void generateEFTFile() {
     EFTFileData.printEFTReport();
   }
 }

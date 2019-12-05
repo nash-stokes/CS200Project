@@ -148,6 +148,14 @@ public class MemberController {
         return false;
     }
 
+    /**
+     * Similar to the above verification function, however this method simply accepts a String as a parameter and returns whether or not it's a valid
+     * member number without prompting the user or confirming/denying the validation through a print method.
+     * 
+     * @param memberCode a member number which may or may not be validated
+     * @return true if memberCode is an existent member number
+     * @return false if memberCode is a nonexistent member number
+     */
     public static boolean validateCode(String memberCode) {
         for (int i = 0; i < memberList.size(); i++) {
             if (memberList.get(i).getMemberNumber().equals(memberCode))

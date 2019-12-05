@@ -1,6 +1,18 @@
+/**
+ * @author An Thien Duong Do
+ * 
+ * This file funnels users to and from different terminals based upon their input. Furthermore, it locks the provider terminal behind a rudimentary verification
+ * process.
+ */
+
 package main;
 
 public class MainApplication {
+  
+  /**
+   * This is our main function. No parameters are truly passed in. This function is responsible for prompting the user to select a certain terminal,
+   * accepting user input to determine which terminal they are funneled to, and then handling user interaction when that terminal session is ended.
+   */
   public static void main(String[] args) {
 
     ProviderDirectoryData.readFile();

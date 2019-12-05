@@ -66,7 +66,8 @@ public class ProviderDirectoryData {
     }
   }
 
-  /** Returns the number of services.
+  /** 
+  * Returns the number of services.
   */
   public static int getSize() {
     return serviceCodes.size();
@@ -103,6 +104,12 @@ public class ProviderDirectoryData {
     return fees;
   }
 
+  /**
+   * This function returns the name of a service given a service code.
+   * 
+   * @param serviceCode a service code
+   * @return String corresponding to the name of the service with the inputted service code
+   */
   public static String fillName(String serviceCode)
   {
     for (int i = 0; i < serviceCodes.size(); i++)
@@ -116,6 +123,12 @@ public class ProviderDirectoryData {
     return "NULL";
   }
 
+  /**
+   * This function returns the fe of a service given a service code.
+   * 
+   * @param serviceCode a service code
+   * @return double corresponding to the fee of the service with the inputted service code
+   */
   public static double fillFee(String serviceCode)
   {
     for (int i = 0; i < serviceCodes.size(); i++)
@@ -129,6 +142,13 @@ public class ProviderDirectoryData {
     return 0.0;
   }
 
+  
+  /**
+   * This function determines whether or not a service with the inputted service code exists.
+   * 
+   * @param serviceCode the service code that will be checked for existence
+   * @return boolean true if service code exists, false if it does not exist
+   */
   public static boolean exists(String serviceCode) {
     for (int i = 0; i < serviceCodes.size(); i++)
     {
@@ -139,6 +159,12 @@ public class ProviderDirectoryData {
     return false;
   }
 
+  /**
+   * Validates that the inputted service code was the service the provider meant to enter.
+   * 
+   * @param serviceCode the service code whose name will be displayed for verification
+   * @return boolean true if the provider accepts the service name, false if the provider rejects the service name
+   */
   public static boolean validate(String serviceCode) {
     IOController.output("Is this the correct service which was performed? Enter \"y\" or \"n\":");
     IOController.output(fillName(serviceCode));
