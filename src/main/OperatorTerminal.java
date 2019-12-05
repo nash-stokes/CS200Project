@@ -1,18 +1,17 @@
 package main;
 
 /**
- * The Operator Terminal class stores the providers to be paid and how much to
- * pay them.
- * 
+ * The Operator Terminal class stores the providers to be paid and how much to pay them.
+ *
  * @author Lyle Stokes
  */
 public class OperatorTerminal {
   /**
-   * Takes parameters to carryout operator's intended action. 0 represents a
-   * member account action. 1 represents a provider account action.
-   * 
+   * Takes parameters to carryout operator's intended action. 0 represents a member account action.
+   * 1 represents a provider account action.
+   *
    * @param accType determines account type to be operated on
-   * @param action  determines action to perform on account
+   * @param action determines action to perform on account
    */
   public static void manageAccount(int accType, int action) {
     if (accType == 0) {
@@ -39,8 +38,9 @@ public class OperatorTerminal {
   }
 
   /**
-   * This function is responsible for prompting the user what account type they would like to interact with. Furthermore, it will also prompt the user for what kind of operation they
-   * would like to perform on that acount type.
+   * This function is responsible for prompting the user what account type they would like to
+   * interact with. Furthermore, it will also prompt the user for what kind of operation they would
+   * like to perform on that acount type.
    */
   public static void run() {
     while (true) {
@@ -56,8 +56,7 @@ public class OperatorTerminal {
         accType = IOController.getInt();
       }
 
-      if (accType == 2)
-        return;
+      if (accType == 2) return;
 
       System.out.println("Please input the action wanted:");
       System.out.println("0 - Add");

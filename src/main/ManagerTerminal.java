@@ -1,16 +1,16 @@
 /**
  * @author An Thien Duong Do
- * 
- * This class acts as the virtual Manager Terminal. From here, users are granted the ability to run calculations on a variety of reports. Furthermore, they may choose
- * to run the main accounting procedure.
+ *     <p>This class acts as the virtual Manager Terminal. From here, users are granted the ability
+ *     to run calculations on a variety of reports. Furthermore, they may choose to run the main
+ *     accounting procedure.
  */
-
 package main;
 
 public class ManagerTerminal {
-  
+
   /**
-   * This function prompts the user for input in determining which report they wish to calculate and print, or whether or not they'd like to run the main accounting procedure.
+   * This function prompts the user for input in determining which report they wish to calculate and
+   * print, or whether or not they'd like to run the main accounting procedure.
    */
   public static void run() {
     while (true) {
@@ -24,10 +24,9 @@ public class ManagerTerminal {
       System.out.println("5 - Quit");
 
       int reportType = IOController.getInt();
-      if (reportType == 5)
-        return;
+      if (reportType == 5) return;
 
-        switch (reportType) {
+      switch (reportType) {
         case 0:
           ReportController.generateAccountsPayable();
           break;
@@ -40,13 +39,13 @@ public class ManagerTerminal {
         case 3:
           ReportController.generateEFTFile();
           break;
-          case 4:
-            MainAccountingController.getWeeklyReport();
-            break;
-          default:
-            IOController.output("Invalid selection. Try again.");
-            break;
-        }
+        case 4:
+          MainAccountingController.getWeeklyReport();
+          break;
+        default:
+          IOController.output("Invalid selection. Try again.");
+          break;
       }
+    }
   }
 }

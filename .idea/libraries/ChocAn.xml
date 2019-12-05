@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ChocAn">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/release/ChocAn.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
